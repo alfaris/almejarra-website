@@ -1,10 +1,11 @@
 import { motion } from 'motion/react'
-import { ArrowRight, ExternalLink, Newspaper } from 'lucide-react'
+import { ArrowRight, ExternalLink, Globe, Newspaper } from 'lucide-react'
 
 import { JoinCta } from '@/components/JoinCta'
 import { Reveal } from '@/components/Reveal'
 import { staggerChild, staggerParent } from '@/lib/motion'
 import { SectionHeading } from '@/components/SectionHeading'
+import { SocialIcon } from '@/components/SocialIcon'
 import { Button } from '@/components/ui/button'
 import { useI18n } from '@/lib/i18n'
 import { TEAM_HASH } from '@/lib/router'
@@ -36,6 +37,21 @@ export function Team() {
                 <div className="absolute inset-x-0 bottom-0 p-6 text-white">
                   <p className="text-sm text-star">{m.role}</p>
                   <h3 className="font-display text-2xl font-semibold">{m.name}</h3>
+                  <ul className="mt-3 flex gap-2">
+                    {m.links.map((l) => (
+                      <li key={l.href}>
+                        <a
+                          href={l.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          aria-label={`${m.name}: ${team.linkLabels[l.id]}`}
+                          className="inline-flex size-9 items-center justify-center rounded-full border border-white/20 bg-white/10 backdrop-blur transition hover:border-star hover:bg-star hover:text-space focus-visible:outline-2 focus-visible:outline-star"
+                        >
+                          {l.id === 'website' ? <Globe className="size-4" aria-hidden /> : <SocialIcon id={l.id} className="size-4" />}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
                   <p className="mt-2 overflow-hidden text-sm leading-relaxed text-white/75 transition-all duration-500 md:max-h-0 md:opacity-0 md:group-hover:max-h-40 md:group-hover:opacity-100">
                     {m.bio}
                   </p>

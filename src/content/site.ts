@@ -56,3 +56,24 @@ export const site = {
 }
 
 export type SocialId = (typeof site.socials)[number]['id']
+
+export interface ProfileLink {
+  id: SocialId | 'website'
+  href: string
+}
+
+// Founders' profiles, from the old "Meet AlMejarra" page.
+export const founderLinks = {
+  ahmed: [
+    { id: 'website', href: 'http://alfaris.ws' },
+    { id: 'facebook', href: 'https://facebook.com/alfaris' },
+    { id: 'linkedin', href: 'https://www.linkedin.com/in/ahmedfaris' },
+    { id: 'x', href: 'https://x.com/alfaris' },
+  ],
+  amr: [
+    { id: 'facebook', href: 'https://www.facebook.com/7erzo' },
+    { id: 'linkedin', href: 'https://www.linkedin.com/in/amrherzo' },
+    { id: 'x', href: 'https://x.com/7erzo' },
+  ],
+  waleed: [{ id: 'facebook', href: 'https://www.facebook.com/waled.herzo' }],
+} satisfies Record<string, ProfileLink[]>

@@ -1,4 +1,4 @@
-import { site } from './site'
+import { founderLinks, site } from './site'
 import type { Content } from './types'
 
 const network: Content['network']['groups'] = [
@@ -232,20 +232,24 @@ export const ar: Content = {
         role: 'مؤسس ومدير الإبداع',
         bio: 'مصمم ومطور واجهات ويب ومختص بتجربة المستخدم. مؤمن بالريادة كأسلوب حياة، ونفسه المجرة تسيب بصمة وتنشر المعرفة في كل مكان.',
         image: site.images.teamAhmed,
+        links: founderLinks.ahmed,
       },
       {
         name: 'عمرو حرزو',
         role: 'مؤسس والمدير التنفيذي',
         bio: 'استشاري تطبيقات SAP وشغوف بالـ Business Intelligence والـ Big Data. مؤمن إن الفرص بتتصنع أكتر ما بتتقنص، وبروح الفريق والمشاركة المجتمعية.',
         image: site.images.teamAmr,
+        links: founderLinks.amr,
       },
       {
         name: 'وليد عبد الحميد',
         role: 'مؤسس',
         bio: 'محامي حر ومستشار قانوني لعدد من الشركات. بيؤمن بالعمل الحر والمشاركة المجتمعية، وشايف إن الالتزام بالقيمة والجودة أهم عوامل النجاح.',
         image: site.images.teamWaleed,
+        links: founderLinks.waleed,
       },
     ],
+    linkLabels: { website: 'الموقع الشخصي', facebook: 'Facebook', linkedin: 'LinkedIn', x: 'X', instagram: 'Instagram', youtube: 'YouTube' },
     teamLink: 'تعرّف على الفريق ولوحة الشرف',
     join: {
       title: 'إنضم لرواد فضاء المجرة',

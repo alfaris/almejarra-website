@@ -1,3 +1,5 @@
+import type { ProfileLink } from './site'
+
 export type Lang = 'ar' | 'en'
 
 export type IconName =
@@ -90,7 +92,9 @@ export interface Content {
     eyebrow: string
     title: string
     subtitle?: string
-    members: { name: string; role: string; bio: string; image: string }[]
+    members: { name: string; role: string; bio: string; image: string; links: ProfileLink[] }[]
+    /** Accessible names for profile links, e.g. "Website"; brand names are used for the rest. */
+    linkLabels: { website: string; facebook: string; linkedin: string; x: string; instagram: string; youtube: string }
     /** Link to the team page. */
     teamLink: string
     join: { title: string; text: string; cta: string }

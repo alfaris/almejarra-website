@@ -1,4 +1,4 @@
-import { site } from './site'
+import { founderLinks, site } from './site'
 import type { Content } from './types'
 
 const network: Content['network']['groups'] = [
@@ -232,20 +232,24 @@ export const en: Content = {
         role: 'Founder & Creative Director',
         bio: 'Web UI designer and developer focused on mobile UX. He sees entrepreneurship as a way of life and wants AlMejarra to leave a mark and spread knowledge everywhere.',
         image: site.images.teamAhmed,
+        links: founderLinks.ahmed,
       },
       {
         name: 'Amr Herzo',
         role: 'Co-founder & CEO',
         bio: 'SAP consultant passionate about business intelligence and big data. He believes opportunities are made more than they are found, and in teamwork and community.',
         image: site.images.teamAmr,
+        links: founderLinks.amr,
       },
       {
         name: 'Waleed Abdelhamid',
         role: 'Co-founder',
         bio: 'Independent lawyer and legal counsel to several companies. He believes in independent work and community, and that commitment to value and quality drives success.',
         image: site.images.teamWaleed,
+        links: founderLinks.waleed,
       },
     ],
+    linkLabels: { website: 'Website', facebook: 'Facebook', linkedin: 'LinkedIn', x: 'X', instagram: 'Instagram', youtube: 'YouTube' },
     teamLink: 'Meet the team & honors board',
     join: {
       title: 'Join the AlMejarra crew',
