@@ -213,7 +213,7 @@ export const en: Content = {
     items: [
       { date: 'Jan 12, 2015', title: 'Launch', text: 'AlMejarra lifted off from its first home in 10th of Ramadan City.' },
       { date: 'Mar 2015', title: 'The Big Bang', text: 'The official opening, at an event called “The Big Bang”.' },
-      { date: 'Dec 2015', title: 'A new launch', text: 'AlMejarra moved to University Villas in Zagazig and reopened with an event called “A New Launch”.' },
+      { date: 'Dec 2015', title: 'A new launch', text: 'We opened AlMejarra in University Villas, Zagazig, with an event called “A New Launch”, then closed the 10th of Ramadan branch and settled in Zagazig.' },
       { date: 'Today', title: 'Still orbiting', text: 'The first community for geeks, freelancers and entrepreneurs in Sharqia, and still growing.' },
     ],
   },
@@ -224,7 +224,7 @@ export const en: Content = {
     members: [
       {
         name: 'Ahmed Fares',
-        role: 'Founder & Creative Director',
+        role: 'Founder & Co-owner',
         bio: 'Web UI designer and developer focused on mobile UX. He sees entrepreneurship as a way of life and wants AlMejarra to leave a mark and spread knowledge everywhere.',
         image: site.images.teamAhmed,
         links: founderLinks.ahmed,
@@ -311,7 +311,7 @@ export const en: Content = {
     items: [
       {
         q: 'How and when did you start?',
-        a: 'AlMejarra launched on January 12, 2015 in 10th of Ramadan City, with an official opening event called “The Big Bang” in March 2015. In December 2015 we moved to Zagazig and reopened with an event called “A New Launch”.',
+        a: 'AlMejarra launched on January 12, 2015 in 10th of Ramadan City, with an official opening event called “The Big Bang” in March 2015. In December 2015 we opened in Zagazig with an event called “A New Launch”, then closed the 10th of Ramadan branch; Zagazig has been our home ever since.',
       },
       {
         q: 'Who are you?',
