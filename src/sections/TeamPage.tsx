@@ -6,9 +6,11 @@ import { Reveal } from '@/components/Reveal'
 import { SectionHeading } from '@/components/SectionHeading'
 import { site } from '@/content/site'
 import { useI18n } from '@/lib/i18n'
+import { hrefFor, onLinkClick } from '@/lib/router'
 
 export function TeamPage() {
-  const { t } = useI18n()
+  const { t, lang } = useI18n()
+  const homeHref = hrefFor(lang, 'home')
   const page = t.teamPage
   return (
     <>
@@ -22,7 +24,7 @@ export function TeamPage() {
           aria-hidden
         />
         <div className="relative mx-auto max-w-7xl px-4 md:px-8">
-          <a href="#top" className="mb-10 inline-flex items-center gap-2 text-sm text-white/60 transition hover:text-white">
+          <a href={homeHref} onClick={onLinkClick(homeHref)} className="mb-10 inline-flex items-center gap-2 text-sm text-white/60 transition hover:text-white">
             <ArrowLeft className="size-4 rtl:-scale-x-100" aria-hidden />
             {page.back}
           </a>

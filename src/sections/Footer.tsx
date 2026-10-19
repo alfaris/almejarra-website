@@ -4,14 +4,16 @@ import { BrandStripe } from '@/components/BrandStripe'
 import { SocialIcon } from '@/components/SocialIcon'
 import { site } from '@/content/site'
 import { useI18n } from '@/lib/i18n'
-import { TEAM_HASH } from '@/lib/router'
+import { hrefFor, onLinkClick, useRoute } from '@/lib/router'
 import { scrollToId } from '@/lib/scroll'
 import { Logo } from './Navbar'
 
 const year = new Date().getFullYear()
 
 export function Footer() {
-  const { t } = useI18n()
+  const { t, lang } = useI18n()
+  const route = useRoute()
+  const teamHref = hrefFor(lang, 'team')
   return (
     <footer className="relative overflow-hidden bg-space pt-16 text-white">
       <div className="mx-auto max-w-7xl px-4 md:px-8">
@@ -24,7 +26,7 @@ export function Footer() {
             {t.nav.links.map((l) => (
               <a
                 key={l.id}
-                href={`#${l.id}`}
+                href={route === 'home' ? `#${l.id}` : hrefFor(lang, 'home', l.id)}
                 onClick={(e) => {
                   e.preventDefault()
                   scrollToId(l.id)
@@ -34,7 +36,7 @@ export function Footer() {
                 {l.label}
               </a>
             ))}
-            <a href={TEAM_HASH} className="text-white/70 transition hover:text-star">
+            <a href={teamHref} onClick={onLinkClick(teamHref)} className="text-white/70 transition hover:text-star">
               {t.nav.team}
             </a>
           </nav>

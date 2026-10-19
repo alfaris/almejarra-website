@@ -1,4 +1,5 @@
 import { founderLinks, site } from './site'
+import pageMeta from './meta.json'
 import type { Content } from './types'
 
 const network: Content['network']['groups'] = [
@@ -22,11 +23,7 @@ const network: Content['network']['groups'] = [
 ]
 
 export const ar: Content = {
-  meta: {
-    title: 'المجرة | أول مساحة عمل مشتركة بالشرقية',
-    description:
-      'المجرة مساحة عمل مشتركة ومركز مجتمعي في الزقازيق لرواد الأعمال وأصحاب العمل الحر والطلاب ومهاويس التقنية. مكاتب، قاعات تدريب، فعاليات ومجتمع.',
-  },
+  meta: { ...pageMeta.ar.home, team: pageMeta.ar.team },
   brand: { name: 'المجرة', tagline: 'مساحة عمل مشتركة' },
   nav: {
     links: [

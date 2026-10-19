@@ -8,10 +8,10 @@ import { SectionHeading } from '@/components/SectionHeading'
 import { SocialIcon } from '@/components/SocialIcon'
 import { Button } from '@/components/ui/button'
 import { useI18n } from '@/lib/i18n'
-import { TEAM_HASH } from '@/lib/router'
+import { hrefFor, onLinkClick } from '@/lib/router'
 
 export function Team() {
-  const { t } = useI18n()
+  const { t, lang } = useI18n()
   const team = t.team
   return (
     <section id="community" className="py-24 md:py-36">
@@ -63,7 +63,7 @@ export function Team() {
 
         <Reveal className="mt-10">
           <Button variant="outline" size="lg" asChild>
-            <a href={TEAM_HASH}>
+            <a href={hrefFor(lang, 'team')} onClick={onLinkClick(hrefFor(lang, 'team'))}>
               {team.teamLink}
               <ArrowRight className="rtl:-scale-x-100" />
             </a>

@@ -1,5 +1,7 @@
 // Language-neutral facts shared by every translation. Edit here to update contact details.
-const img = (name: string) => `${import.meta.env.BASE_URL}images/${name}`
+import { assetUrl } from '@/lib/paths'
+
+const img = (name: string) => assetUrl(`images/${name}`)
 
 export const site = {
   url: 'https://almejarra.com',
@@ -55,7 +57,7 @@ export const site = {
   /** Featured reel on the home page: a self-hosted copy of the Instagram post, plus its link. */
   reel: {
     instagram: 'https://www.instagram.com/p/DUGxZ_yD9D5/',
-    video: `${import.meta.env.BASE_URL}videos/almejarra-reel.mp4`,
+    video: assetUrl('videos/almejarra-reel.mp4'),
     poster: img('reel-cover.webp'),
   },
   videos: {

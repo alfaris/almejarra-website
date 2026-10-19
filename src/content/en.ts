@@ -1,4 +1,5 @@
 import { founderLinks, site } from './site'
+import pageMeta from './meta.json'
 import type { Content } from './types'
 
 const network: Content['network']['groups'] = [
@@ -22,11 +23,7 @@ const network: Content['network']['groups'] = [
 ]
 
 export const en: Content = {
-  meta: {
-    title: 'AlMejarra | The first coworking space in Sharqia',
-    description:
-      'AlMejarra is a coworking space and community hub in Zagazig, Egypt, for entrepreneurs, freelancers, students and tech geeks. Desks, training rooms, events and community.',
-  },
+  meta: { ...pageMeta.en.home, team: pageMeta.en.team },
   brand: { name: 'AlMejarra', tagline: 'Coworking Space' },
   nav: {
     links: [

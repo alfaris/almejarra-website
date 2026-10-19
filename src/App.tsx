@@ -2,7 +2,6 @@ import { useEffect } from 'react'
 import Lenis from 'lenis'
 
 import { useReducedMotion } from '@/lib/useMediaQuery'
-import { useI18n } from '@/lib/i18n'
 import { useRoute } from '@/lib/router'
 import { scrollToId, scrollToTop, setLenis } from '@/lib/scroll'
 import { About } from '@/sections/About'
@@ -24,11 +23,6 @@ import { Why } from '@/sections/Why'
 export default function App() {
   const reduced = useReducedMotion()
   const route = useRoute()
-  const { t } = useI18n()
-
-  useEffect(() => {
-    document.title = route === 'team' ? `${t.teamPage.title} | ${t.brand.name}` : t.meta.title
-  }, [route, t])
 
   // On a route change start at the top, or at the home section named in the hash.
   useEffect(() => {

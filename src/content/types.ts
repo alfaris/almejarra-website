@@ -51,7 +51,8 @@ export interface PackageItem {
 }
 
 export interface Content {
-  meta: { title: string; description: string }
+  /** Page titles and descriptions; edit them in meta.json (also used to generate the HTML pages). */
+  meta: { title: string; description: string; team: { title: string; description: string } }
   brand: { name: string; tagline: string }
   nav: {
     links: { id: string; label: string }[]
