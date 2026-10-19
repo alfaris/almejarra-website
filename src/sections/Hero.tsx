@@ -1,6 +1,6 @@
 import { lazy, Suspense, useRef, useState } from 'react'
 import { motion, useInView, useScroll, useTransform } from 'motion/react'
-import { ArrowDown, MapPin } from 'lucide-react'
+import { ArrowDown, Orbit } from 'lucide-react'
 
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
@@ -57,7 +57,7 @@ export function Hero() {
       <motion.div style={{ y: textY, opacity: textOpacity }} className="mx-auto w-full max-w-7xl px-4 pb-24 pt-32 md:px-8">
         <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
           <Badge variant="glass" className="mb-8">
-            <MapPin />
+            <Orbit />
             {t.hero.eyebrow}
           </Badge>
         </motion.div>

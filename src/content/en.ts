@@ -44,7 +44,7 @@ export const en: Content = {
     close: 'Close',
   },
   hero: {
-    eyebrow: 'Zagazig · Since 2014',
+    eyebrow: 'AlMejarra · Since 2014',
     title: ['The first coworking', 'space in Sharqia'],
     subtitle:
       'Where the comfort of home meets the focus of work. A community of entrepreneurs, freelancers, students and tech geeks who work, learn and grow together.',
