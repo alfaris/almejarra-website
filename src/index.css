@@ -93,7 +93,7 @@
   /* Arabic gets Plex Arabic for text and Reem Kufi for display. */
   html[lang="ar"] {
     --font-sans: "IBM Plex Sans Arabic", "Inter Variable", system-ui, sans-serif;
-    --font-display: "Reem Kufi Variable", "IBM Plex Sans Arabic", system-ui, sans-serif;
+    --font-display: "Reem Kufi Variable", "Space Grotesk Variable", "IBM Plex Sans Arabic", system-ui, sans-serif;
   }
   body {
     @apply bg-background text-foreground font-sans antialiased;

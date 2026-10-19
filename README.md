@@ -9,7 +9,7 @@ A fully static redesign of [almejarra.com](https://almejarra.com), the first cow
 
 ## Stack
 
-Vite · React · TypeScript · Tailwind CSS v4 · Radix UI (shadcn pattern) · three.js / @react-three/fiber · motion · lenis · lucide-react · self-hosted fonts (IBM Plex Sans Arabic, Reem Kufi, Space Grotesk, Inter).
+Vite · React · TypeScript · Tailwind CSS v4 · Radix UI (shadcn pattern) · three.js / @react-three/fiber · motion · lenis · lucide-react · self-hosted fonts (IBM Plex Sans Arabic, Reem Kufi, Space Grotesk, Inter; Arabic and Latin subsets only, declared in `src/fonts.css`).
 
 ## Develop
 
@@ -17,13 +17,16 @@ Vite · React · TypeScript · Tailwind CSS v4 · Radix UI (shadcn pattern) · t
 npm install
 npm run dev       # http://localhost:5173
 npm run lint
-npm run build     # outputs dist/
-npm run preview   # serve dist/ locally
+npm run build        # dist/index.html with all JS, CSS and fonts inlined
+npm run build:split  # dist/ with separate, lazily loaded chunks (smaller first load)
+npm run preview      # serve dist/ locally
 ```
 
 ## Deploy
 
-Run `npm run build` and upload the **contents of `dist/`** to any static host (cPanel/FTP, Netlify, Vercel, GitHub Pages, Cloudflare Pages, S3…). The build uses relative paths (`base: './'`), so it also works from a sub-folder.
+Run `npm run build` and upload the **contents of `dist/`** (`index.html`, `favicon.jpg` and `images/`) to any static host (cPanel/FTP, Netlify, Vercel, GitHub Pages, Cloudflare Pages, S3…). Paths are relative, so it also works from a sub-folder.
+
+The default build inlines everything into `index.html`, so you can also open it by double-clicking it, with no server. Browsers refuse to load separate script files from `file://`, which would leave the page blank. For production hosting you can use `npm run build:split` instead: the 3D scene then loads as a separate chunk after the text, but that build only works when served over http(s).
 
 ## Editing content
 
