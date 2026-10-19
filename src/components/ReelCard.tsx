@@ -49,7 +49,6 @@ export function ReelCard({
           <button
             type="button"
             onClick={play}
-            aria-label={playLabel}
             className="absolute inset-0 flex items-center justify-center bg-gradient-to-t from-space/70 via-transparent to-space/20 outline-none focus-visible:ring-4 focus-visible:ring-inset focus-visible:ring-star/60"
           >
             <span className="absolute start-4 top-4 inline-flex items-center gap-2 rounded-full bg-space/50 px-3 py-1.5 text-xs text-white backdrop-blur" aria-hidden>
@@ -64,6 +63,7 @@ export function ReelCard({
                 <Play className="ms-1 size-8 fill-white text-white" />
               </span>
             </span>
+            <span className="sr-only">{playLabel}</span>
           </button>
         )}
       </div>

@@ -34,7 +34,7 @@ export function Gallery() {
                 loading="lazy"
                 className="size-full object-cover transition duration-700 group-hover:scale-105"
               />
-              <span className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-space/80 to-transparent p-4 text-sm text-white opacity-0 transition-opacity duration-500 group-hover:opacity-100">
+              <span aria-hidden className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-space/80 to-transparent p-4 text-sm text-white opacity-0 transition-opacity duration-500 group-hover:opacity-100">
                 {item.alt}
               </span>
             </motion.li>

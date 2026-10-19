@@ -77,7 +77,7 @@ export function Navbar() {
       )}
     >
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-4 px-4 md:h-[72px] md:px-8">
-        <a href={hrefFor(lang, 'home')} onClick={go('top')} aria-label={t.brand.name}>
+        <a href={hrefFor(lang, 'home')} onClick={go('top')}>
           <Logo />
         </a>
 

@@ -200,7 +200,7 @@ export function Contact() {
                   {f.emailCta}
                 </Button>
               </div>
-              <p className="mt-4 text-xs text-white/45">{f.note}</p>
+              <p className="mt-4 text-xs text-white/60">{f.note}</p>
             </form>
           </Reveal>
         </div>

@@ -116,7 +116,12 @@ export function About() {
               variants={staggerChild}
               className="group relative overflow-hidden rounded-3xl bg-secondary p-8 transition-colors duration-500 hover:bg-space hover:text-white"
             >
-              <span className="absolute end-6 top-6 font-display text-6xl font-bold text-primary/10 transition-colors group-hover:text-white/10">0{i + 1}</span>
+              {/* Decorative watermark number, drawn by CSS so it is not page text. */}
+              <span
+                aria-hidden
+                data-num={`0${i + 1}`}
+                className="absolute end-6 top-6 font-display text-6xl font-bold text-primary/10 transition-colors before:content-[attr(data-num)] group-hover:text-white/10"
+              />
               <span className="mb-10 inline-flex size-14 items-center justify-center rounded-2xl bg-primary text-primary-foreground transition-transform duration-500 group-hover:-rotate-12 group-hover:scale-110">
                 <Icon name={p.icon} className="size-6" />
               </span>
