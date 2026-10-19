@@ -36,7 +36,7 @@ export const site = {
     crew: img('crew.webp'),
     shuttle: img('shuttle.webp'),
     capsule: img('capsule.webp'),
-    teamAhmed: img('team-ahmed-fares.webp'),
+    teamAhmed: img('team-ahmed-fares-2026.webp'),
     teamAmr: img('team-amr-herzo.webp'),
     teamWaleed: img('team-waleed.webp'),
     staff: {
@@ -82,7 +82,7 @@ export interface ProfileLink {
 // Founders' profiles, from the old "Meet AlMejarra" page.
 export const founderLinks = {
   ahmed: [
-    { id: 'website', href: 'http://alfaris.ws' },
+    { id: 'website', href: 'https://afaris.me' },
     { id: 'facebook', href: 'https://facebook.com/alfaris' },
     { id: 'linkedin', href: 'https://www.linkedin.com/in/ahmedfaris' },
     { id: 'x', href: 'https://x.com/alfaris' },
