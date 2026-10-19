@@ -106,6 +106,8 @@ export function Hero() {
                   {wi < words(line).length - 1 && ' '}
                 </motion.span>
               ))}
+              {/* Keeps the lines separate words in the heading's text, not "عملمشتركة". */}
+              {li < t.hero.title.length - 1 && ' '}
             </span>
           ))}
         </h1>

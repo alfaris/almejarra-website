@@ -44,7 +44,7 @@ export const en: Content = {
     eyebrow: 'AlMejarra · Since 2014',
     title: ['The first coworking', 'space in Sharqia'],
     subtitle:
-      'Where the comfort of home meets the focus of work. A community of entrepreneurs, freelancers, students and tech geeks who work, learn and grow together.',
+      'A coworking space in Zagazig where the comfort of home meets the focus of work. A community of entrepreneurs, freelancers, students and tech geeks who work, learn and grow together.',
     primary: 'Book a visit',
     secondary: 'Explore spaces',
     scroll: 'Scroll',
@@ -95,7 +95,7 @@ export const en: Content = {
   spaces: {
     eyebrow: 'Spaces',
     title: 'Choose your orbit',
-    subtitle: 'Four spaces for every way of working, from a desk in the open space to a fully equipped training hall.',
+    subtitle: 'Four spaces in Zagazig for every way of working: a coworking desk, a training and meeting room, a private office and an event space.',
     items: [
       {
         id: 'space',
@@ -164,7 +164,7 @@ export const en: Content = {
   packages: {
     eyebrow: 'Packages',
     title: 'Join the Galaxy',
-    subtitle: 'Pick the package that fits your rhythm and send us a note; we will reply with details and pricing.',
+    subtitle: 'Pick the package that fits your rhythm at our Zagazig coworking space and send us a note; we will reply with details and pricing.',
     items: [
       {
         id: 'weekly',
@@ -209,6 +209,7 @@ export const en: Content = {
   gallery: {
     eyebrow: 'Take a look',
     title: 'Inside AlMejarra',
+    subtitle: 'Real photos from our coworking space in Zagazig.',
     items: [
       { src: site.images.spaceRoom, alt: 'The Space: colourful desks, bean bags and an open floor' },
       { src: site.images.shuttle, alt: 'The Shuttle room door, painted with its name and stars' },
@@ -220,7 +221,7 @@ export const en: Content = {
   events: {
     eyebrow: 'Events',
     title: 'Upcoming at AlMejarra',
-    subtitle: 'Workshops, meetups and bootcamps for the AlMejarra community.',
+    subtitle: 'Workshops, meetups and bootcamps in Zagazig for the AlMejarra community.',
     emptyTitle: 'No events announced right now',
     emptyText: 'Follow our Facebook page to hear about new events first.',
     follow: 'AlMejarra events on Facebook',

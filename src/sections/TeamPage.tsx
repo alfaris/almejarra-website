@@ -28,7 +28,7 @@ export function TeamPage() {
             <ArrowLeft className="size-4 rtl:-scale-x-100" aria-hidden />
             {page.back}
           </a>
-          <SectionHeading eyebrow={page.eyebrow} title={page.title} subtitle={page.subtitle} dark />
+          <SectionHeading as="h1" eyebrow={page.eyebrow} title={page.title} subtitle={page.subtitle} dark />
         </div>
       </section>
 

@@ -90,6 +90,7 @@ export interface Content {
   gallery: {
     eyebrow: string
     title: string
+    subtitle?: string
     /** Bento order: room, shuttle, chairs, balloon, wide. */
     items: { src: string; alt: string }[]
   }
