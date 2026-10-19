@@ -1,0 +1,134 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* Brand tokens — purple from the AlMejarra logo, rainbow rim as accents. */
+:root {
+  --radius: 1rem;
+
+  --space: oklch(0.13 0.04 310);
+  --space-2: oklch(0.18 0.06 310);
+  --nebula: oklch(0.47 0.19 330);
+  --nebula-light: oklch(0.72 0.16 320);
+  --star: oklch(0.85 0.14 80);
+  --rim-red: oklch(0.6 0.22 27);
+  --rim-blue: oklch(0.72 0.13 230);
+  --rim-lime: oklch(0.82 0.17 125);
+
+  --background: oklch(0.985 0.006 320);
+  --foreground: oklch(0.18 0.04 310);
+  --card: oklch(1 0 0);
+  --card-foreground: var(--foreground);
+  --popover: oklch(1 0 0);
+  --popover-foreground: var(--foreground);
+  --primary: var(--nebula);
+  --primary-foreground: oklch(0.99 0 0);
+  --secondary: oklch(0.95 0.02 320);
+  --secondary-foreground: var(--foreground);
+  --muted: oklch(0.95 0.012 320);
+  --muted-foreground: oklch(0.45 0.03 310);
+  --accent: oklch(0.94 0.04 320);
+  --accent-foreground: var(--foreground);
+  --destructive: var(--rim-red);
+  --border: oklch(0.9 0.015 320);
+  --input: oklch(0.9 0.015 320);
+  --ring: var(--nebula);
+}
+
+@theme inline {
+  --font-sans: "Inter Variable", "IBM Plex Sans Arabic", system-ui, sans-serif;
+  --font-display: "Space Grotesk Variable", "Reem Kufi Variable", system-ui, sans-serif;
+
+  --color-space: var(--space);
+  --color-space-2: var(--space-2);
+  --color-nebula: var(--nebula);
+  --color-nebula-light: var(--nebula-light);
+  --color-star: var(--star);
+  --color-rim-red: var(--rim-red);
+  --color-rim-blue: var(--rim-blue);
+  --color-rim-lime: var(--rim-lime);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --radius-sm: calc(var(--radius) - 6px);
+  --radius-md: calc(var(--radius) - 4px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 6px);
+
+  --animate-marquee: marquee 40s linear infinite;
+  --animate-spin-slow: spin 30s linear infinite;
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html {
+    scroll-behavior: auto;
+    -webkit-tap-highlight-color: transparent;
+  }
+  /* Arabic gets Plex Arabic for text and Reem Kufi for display. */
+  html[lang="ar"] {
+    --font-sans: "IBM Plex Sans Arabic", "Inter Variable", system-ui, sans-serif;
+    --font-display: "Reem Kufi Variable", "IBM Plex Sans Arabic", system-ui, sans-serif;
+  }
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    overflow-x: clip;
+  }
+  ::selection {
+    background: var(--nebula);
+    color: white;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    background: linear-gradient(100deg, var(--nebula-light), var(--star) 45%, var(--rim-blue) 90%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .rim-gradient {
+    background: conic-gradient(from 200deg, var(--rim-red), var(--star), var(--rim-lime), var(--rim-blue), var(--nebula), var(--rim-red));
+  }
+  .grain {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");
+  }
+  .mask-fade-x {
+    mask-image: linear-gradient(90deg, transparent, black 10%, black 90%, transparent);
+  }
+}
+
+/* Lenis */
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+.lenis.lenis-stopped { overflow: clip; }
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee, .animate-spin-slow { animation: none; }
+}
