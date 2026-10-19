@@ -222,6 +222,7 @@ export const en: Content = {
     eyebrow: 'Mission log',
     title: 'From the Big Bang to a new launch',
     items: [
+      { date: 'Nov 25, 2014', title: 'The beginning', text: 'We started the AlMejarra journey and began preparing the first coworking space in Sharqia.' },
       { date: 'Jan 12, 2015', title: 'Launch', text: 'AlMejarra lifted off from its first home in 10th of Ramadan City.' },
       { date: 'Mar 2015', title: 'The Big Bang', text: 'The official opening, at an event called “The Big Bang”.' },
       { date: 'Dec 2015', title: 'A new launch', text: 'We opened AlMejarra in University Villas, Zagazig, with an event called “A New Launch”, then closed the 10th of Ramadan branch and settled in Zagazig.' },
@@ -322,7 +323,7 @@ export const en: Content = {
     items: [
       {
         q: 'How and when did you start?',
-        a: 'AlMejarra launched on January 12, 2015 in 10th of Ramadan City, with an official opening event called “The Big Bang” in March 2015. In December 2015 we opened in Zagazig with an event called “A New Launch”, then closed the 10th of Ramadan branch; Zagazig has been our home ever since.',
+        a: 'We started the AlMejarra journey on November 25, 2014, and launched on January 12, 2015 in 10th of Ramadan City, with an official opening event called “The Big Bang” in March 2015. In December 2015 we opened in Zagazig with an event called “A New Launch”, then closed the 10th of Ramadan branch; Zagazig has been our home ever since.',
       },
       {
         q: 'Who are you?',
