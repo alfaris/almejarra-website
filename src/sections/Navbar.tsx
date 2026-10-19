@@ -13,7 +13,8 @@ export function Logo({ className }: { className?: string }) {
   const { t } = useI18n()
   return (
     <span className={cn('flex items-center gap-2.5', className)}>
-      <img src={site.images.logoMark} alt="" width={44} height={28} className="h-7 w-auto rtl:-scale-x-100" />
+      {/* The mark keeps its original orientation in both languages. */}
+      <img src={site.images.logoMark} alt="" width={292} height={189} className="h-7 w-auto" />
       <span className="flex flex-col leading-none">
         <span className="font-display text-lg font-bold tracking-tight">{t.brand.name}</span>
         <span className="text-[0.65rem] opacity-60">{t.brand.tagline}</span>

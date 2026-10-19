@@ -1,5 +1,6 @@
 import { ArrowUp } from 'lucide-react'
 
+import { BrandStripe } from '@/components/BrandStripe'
 import { SocialIcon } from '@/components/SocialIcon'
 import { site } from '@/content/site'
 import { useI18n } from '@/lib/i18n'
@@ -60,6 +61,7 @@ export function Footer() {
       >
         {t.brand.name}
       </p>
+      <BrandStripe />
     </footer>
   )
 }
