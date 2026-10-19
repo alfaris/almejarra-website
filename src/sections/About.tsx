@@ -3,6 +3,7 @@ import { animate, motion, useInView } from 'motion/react'
 import { Eye, Target } from 'lucide-react'
 
 import { Icon } from '@/components/Icon'
+import { ReelCard } from '@/components/ReelCard'
 import { Reveal } from '@/components/Reveal'
 import { staggerChild, staggerParent } from '@/lib/motion'
 import { SectionHeading } from '@/components/SectionHeading'
@@ -66,20 +67,20 @@ export function About() {
 
           <div className="relative lg:col-span-5">
             <Reveal>
-              <figure className="relative">
-                <div className="rim-gradient absolute -inset-1 rounded-[2rem] opacity-70 blur-xl" aria-hidden />
-                <img
-                  src={site.images.crew}
-                  alt={t.team.title}
-                  loading="lazy"
-                  width={1000}
-                  height={667}
-                  className="relative aspect-[4/5] w-full rounded-[1.75rem] object-cover"
+              <figure className="relative mx-auto max-w-[380px]">
+                <div className="rim-gradient absolute -inset-1 bottom-10 rounded-[2rem] opacity-60 blur-xl" aria-hidden />
+                <ReelCard
+                  video={site.reel.video}
+                  poster={site.reel.poster}
+                  instagramUrl={site.reel.instagram}
+                  playLabel={a.reelPlay}
+                  linkLabel={a.reelLabel}
+                  className="relative"
                 />
-                <div className="absolute -bottom-6 start-6 end-6 rounded-2xl bg-space/90 p-5 text-white backdrop-blur md:start-10 md:end-10">
+                <figcaption className="relative mt-4 rounded-2xl bg-space p-5 text-white">
                   <p className="font-display text-2xl font-semibold">{t.hero.hashtag}</p>
                   <p className="mt-1 text-sm text-white/70">{t.footer.about}</p>
-                </div>
+                </figcaption>
               </figure>
             </Reveal>
           </div>
@@ -115,7 +116,12 @@ export function About() {
               variants={staggerChild}
               className="group relative overflow-hidden rounded-3xl bg-secondary p-8 transition-colors duration-500 hover:bg-space hover:text-white"
             >
-              <span className="absolute end-6 top-6 font-display text-6xl font-bold text-primary/10 transition-colors group-hover:text-white/10">0{i + 1}</span>
+              {/* Decorative watermark number, drawn by CSS so it is not page text. */}
+              <span
+                aria-hidden
+                data-num={`0${i + 1}`}
+                className="absolute end-6 top-6 font-display text-6xl font-bold text-primary/10 transition-colors before:content-[attr(data-num)] group-hover:text-white/10"
+              />
               <span className="mb-10 inline-flex size-14 items-center justify-center rounded-2xl bg-primary text-primary-foreground transition-transform duration-500 group-hover:-rotate-12 group-hover:scale-110">
                 <Icon name={p.icon} className="size-6" />
               </span>

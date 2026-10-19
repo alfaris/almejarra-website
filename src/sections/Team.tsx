@@ -1,20 +1,18 @@
 import { motion } from 'motion/react'
-import { Newspaper, Rocket } from 'lucide-react'
+import { ArrowRight, ExternalLink, Globe, Newspaper } from 'lucide-react'
 
+import { JoinCta } from '@/components/JoinCta'
 import { Reveal } from '@/components/Reveal'
 import { staggerChild, staggerParent } from '@/lib/motion'
 import { SectionHeading } from '@/components/SectionHeading'
+import { SocialIcon } from '@/components/SocialIcon'
 import { Button } from '@/components/ui/button'
 import { useI18n } from '@/lib/i18n'
-import { scrollToId } from '@/lib/scroll'
+import { hrefFor, onLinkClick } from '@/lib/router'
 
 export function Team() {
-  const { t } = useI18n()
+  const { t, lang } = useI18n()
   const team = t.team
-  const join = () => {
-    window.dispatchEvent(new CustomEvent('almejarra:interest', { detail: t.contact.form.interestOptions[7] }))
-    scrollToId('contact')
-  }
   return (
     <section id="community" className="py-24 md:py-36">
       <div className="mx-auto max-w-7xl px-4 md:px-8">
@@ -39,6 +37,21 @@ export function Team() {
                 <div className="absolute inset-x-0 bottom-0 p-6 text-white">
                   <p className="text-sm text-star">{m.role}</p>
                   <h3 className="font-display text-2xl font-semibold">{m.name}</h3>
+                  <ul className="mt-3 flex gap-2">
+                    {m.links.map((l) => (
+                      <li key={l.href}>
+                        <a
+                          href={l.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          aria-label={`${m.name}: ${team.linkLabels[l.id]}`}
+                          className="inline-flex size-9 items-center justify-center rounded-full border border-white/20 bg-white/10 backdrop-blur transition hover:border-star hover:bg-star hover:text-space focus-visible:outline-2 focus-visible:outline-star"
+                        >
+                          {l.id === 'website' ? <Globe className="size-4" aria-hidden /> : <SocialIcon id={l.id} className="size-4" />}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
                   <p className="mt-2 overflow-hidden text-sm leading-relaxed text-white/75 transition-all duration-500 md:max-h-0 md:opacity-0 md:group-hover:max-h-40 md:group-hover:opacity-100">
                     {m.bio}
                   </p>
@@ -48,19 +61,18 @@ export function Team() {
           ))}
         </motion.div>
 
+        <Reveal className="mt-10">
+          <Button variant="outline" size="lg" asChild>
+            <a href={hrefFor(lang, 'team')} onClick={onLinkClick(hrefFor(lang, 'team'))}>
+              {team.teamLink}
+              <ArrowRight className="rtl:-scale-x-100" />
+            </a>
+          </Button>
+        </Reveal>
+
         <div className="mt-10 grid gap-6 lg:grid-cols-3">
           <Reveal className="lg:col-span-2">
-            <div className="relative flex h-full flex-col justify-between gap-6 overflow-hidden rounded-[1.75rem] bg-nebula p-8 text-white md:flex-row md:items-center md:p-10">
-              <div className="rim-gradient absolute -end-20 -top-20 size-60 rounded-full opacity-40 blur-2xl" aria-hidden />
-              <div className="relative">
-                <Rocket className="mb-4 size-8 text-star" aria-hidden />
-                <h3 className="font-display text-3xl font-semibold">{team.join.title}</h3>
-                <p className="mt-2 max-w-lg text-white/80">{team.join.text}</p>
-              </div>
-              <Button variant="star" size="lg" className="relative" onClick={join}>
-                {team.join.cta}
-              </Button>
-            </div>
+            <JoinCta />
           </Reveal>
           <Reveal delay={0.1}>
             <div className="h-full rounded-[1.75rem] border p-8">
@@ -68,8 +80,16 @@ export function Team() {
               <h3 className="font-display text-xl font-semibold">{team.media.title}</h3>
               <ul className="mt-4 flex flex-wrap gap-2">
                 {team.media.items.map((m) => (
-                  <li key={m} className="rounded-full bg-secondary px-3 py-1.5 text-sm">
-                    {m}
+                  <li key={m.href}>
+                    <a
+                      href={m.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 rounded-full bg-secondary px-3 py-1.5 text-sm transition hover:bg-primary hover:text-primary-foreground"
+                    >
+                      {m.name}
+                      <ExternalLink className="size-3.5 opacity-60" aria-hidden />
+                    </a>
                   </li>
                 ))}
               </ul>

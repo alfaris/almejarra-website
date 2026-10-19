@@ -5,10 +5,14 @@ import { staggerChild, staggerParent } from '@/lib/motion'
 import { SectionHeading } from '@/components/SectionHeading'
 import { useI18n } from '@/lib/i18n'
 
-// Fixed pseudo-random star field for the constellation backdrop.
-const stars = Array.from({ length: 28 }, (_, i) => ({
-  x: (i * 37.7) % 100,
-  y: (i * 61.3) % 100,
+// Fixed, well-scattered star field for the constellation backdrop (deterministic hash, no Math.random).
+const hash = (n: number) => {
+  const v = Math.sin(n * 12.9898) * 43758.5453
+  return v - Math.floor(v)
+}
+const stars = Array.from({ length: 30 }, (_, i) => ({
+  x: Math.round((4 + hash(i + 1) * 92) * 10) / 10,
+  y: Math.round((4 + hash(i + 101) * 92) * 10) / 10,
 }))
 
 // Join each star to its nearest neighbour to sketch constellations.
@@ -29,12 +33,13 @@ export function Network() {
   const { t } = useI18n()
   return (
     <section className="relative overflow-hidden bg-space-2 py-24 text-white md:py-32">
-      <svg className="pointer-events-none absolute inset-0 size-full opacity-30" aria-hidden preserveAspectRatio="none" viewBox="0 0 100 100">
+      {/* Percentage coordinates without a viewBox: the field stretches to the section but dots stay round. */}
+      <svg className="pointer-events-none absolute inset-0 size-full opacity-30" aria-hidden>
         {links.map(([a, b], i) => (
-          <line key={i} x1={stars[a].x} y1={stars[a].y} x2={stars[b].x} y2={stars[b].y} stroke="white" strokeWidth="0.06" />
+          <line key={i} x1={`${stars[a].x}%`} y1={`${stars[a].y}%`} x2={`${stars[b].x}%`} y2={`${stars[b].y}%`} stroke="white" strokeWidth="1" />
         ))}
         {stars.map((s, i) => (
-          <circle key={i} cx={s.x} cy={s.y} r="0.3" fill="white" />
+          <circle key={i} cx={`${s.x}%`} cy={`${s.y}%`} r="2.5" fill="white" />
         ))}
       </svg>
       <div className="relative mx-auto max-w-7xl px-4 md:px-8">

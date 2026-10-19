@@ -1,6 +1,6 @@
-import { lazy, Suspense, useRef, useState } from 'react'
+import { lazy, Suspense, useEffect, useRef, useState } from 'react'
 import { motion, useInView, useScroll, useTransform } from 'motion/react'
-import { ArrowDown, MapPin } from 'lucide-react'
+import { ArrowDown, Orbit } from 'lucide-react'
 
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
@@ -10,7 +10,10 @@ import { useMediaQuery, useReducedMotion } from '@/lib/useMediaQuery'
 
 const GalaxyScene = lazy(() => import('@/components/three/Galaxy'))
 
-function hasWebGL() {
+/** WebGL is available, and the visitor hasn't asked to save data. */
+function canShow3D() {
+  const connection = (navigator as Navigator & { connection?: { saveData?: boolean } }).connection
+  if (connection?.saveData) return false
   try {
     const canvas = document.createElement('canvas')
     return !!(canvas.getContext('webgl2') || canvas.getContext('webgl'))
@@ -19,13 +22,39 @@ function hasWebGL() {
   }
 }
 
+/** True once the page has loaded and the browser is idle, so the 3D scene never delays the first paint. */
+function useIdle() {
+  const [idle, setIdle] = useState(false)
+  useEffect(() => {
+    let cancel = () => {}
+    const schedule = () => {
+      // Safari before 18 has no requestIdleCallback.
+      if (typeof window.requestIdleCallback === 'function') {
+        const id = window.requestIdleCallback(() => setIdle(true), { timeout: 2500 })
+        cancel = () => window.cancelIdleCallback(id)
+      } else {
+        const id = globalThis.setTimeout(() => setIdle(true), 800)
+        cancel = () => globalThis.clearTimeout(id)
+      }
+    }
+    if (document.readyState === 'complete') schedule()
+    else window.addEventListener('load', schedule, { once: true })
+    return () => {
+      window.removeEventListener('load', schedule)
+      cancel()
+    }
+  }, [])
+  return idle
+}
+
 export function Hero() {
   const { t, lang, dir } = useI18n()
   const ref = useRef<HTMLElement>(null)
   const inView = useInView(ref, { margin: '0px 0px 0px 0px' })
   const reduced = useReducedMotion()
   const compact = useMediaQuery('(max-width: 768px)')
-  const [webgl] = useState(hasWebGL)
+  const [webgl] = useState(canShow3D)
+  const idle = useIdle()
 
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end start'] })
   const textY = useTransform(scrollYProgress, [0, 1], ['0%', '35%'])
@@ -35,7 +64,7 @@ export function Hero() {
 
   return (
     <section ref={ref} id="top" className="relative isolate flex min-h-svh items-center overflow-hidden bg-space text-white">
-      {/* Fallback nebula, also visible while the 3D scene loads. */}
+      {/* Nebula backdrop: shown first, and instead of the 3D scene without WebGL or with Data Saver on. */}
       <div
         className="absolute inset-0 -z-20"
         style={{
@@ -44,10 +73,10 @@ export function Hero() {
         }}
         aria-hidden
       />
-      {webgl && (
+      {webgl && idle && (
         <div className="absolute inset-0 -z-10">
           <Suspense fallback={null}>
-            <GalaxyScene active={inView} reduced={reduced} compact={compact} offsetX={compact ? 0 : dir === 'rtl' ? -2.8 : 2.8} />
+            <GalaxyScene active={inView} reduced={reduced} compact={compact} side={compact ? 0 : dir === 'rtl' ? -1 : 1} />
           </Suspense>
         </div>
       )}
@@ -57,7 +86,7 @@ export function Hero() {
       <motion.div style={{ y: textY, opacity: textOpacity }} className="mx-auto w-full max-w-7xl px-4 pb-24 pt-32 md:px-8">
         <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
           <Badge variant="glass" className="mb-8">
-            <MapPin />
+            <Orbit />
             {t.hero.eyebrow}
           </Badge>
         </motion.div>

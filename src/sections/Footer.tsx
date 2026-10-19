@@ -4,13 +4,16 @@ import { BrandStripe } from '@/components/BrandStripe'
 import { SocialIcon } from '@/components/SocialIcon'
 import { site } from '@/content/site'
 import { useI18n } from '@/lib/i18n'
+import { hrefFor, onLinkClick, useRoute } from '@/lib/router'
 import { scrollToId } from '@/lib/scroll'
 import { Logo } from './Navbar'
 
 const year = new Date().getFullYear()
 
 export function Footer() {
-  const { t } = useI18n()
+  const { t, lang } = useI18n()
+  const route = useRoute()
+  const teamHref = hrefFor(lang, 'team')
   return (
     <footer className="relative overflow-hidden bg-space pt-16 text-white">
       <div className="mx-auto max-w-7xl px-4 md:px-8">
@@ -23,7 +26,7 @@ export function Footer() {
             {t.nav.links.map((l) => (
               <a
                 key={l.id}
-                href={`#${l.id}`}
+                href={route === 'home' ? `#${l.id}` : hrefFor(lang, 'home', l.id)}
                 onClick={(e) => {
                   e.preventDefault()
                   scrollToId(l.id)
@@ -33,6 +36,9 @@ export function Footer() {
                 {l.label}
               </a>
             ))}
+            <a href={teamHref} onClick={onLinkClick(teamHref)} className="text-white/70 transition hover:text-star">
+              {t.nav.team}
+            </a>
           </nav>
           <div className="flex flex-col items-start gap-4 md:items-end">
             <div className="flex gap-2">
@@ -48,7 +54,7 @@ export function Footer() {
             </button>
           </div>
         </div>
-        <div className="mt-12 flex flex-col justify-between gap-2 border-t border-white/10 py-6 text-xs text-white/45 sm:flex-row">
+        <div className="mt-12 flex flex-col justify-between gap-2 border-t border-white/10 py-6 text-xs text-white/60 sm:flex-row">
           <p>
             {t.footer.rights} {year}
           </p>

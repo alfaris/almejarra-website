@@ -1,0 +1,24 @@
+{
+  "siteUrl": "https://almejarra.com/",
+  "ogImage": "images/og.jpg",
+  "ar": {
+    "home": {
+      "title": "المجرة | أول مساحة عمل مشتركة بالشرقية",
+      "description": "المجرة مساحة عمل مشتركة ومركز مجتمعي في الزقازيق لرواد الأعمال وأصحاب العمل الحر والطلاب ومهاويس التقنية. مكاتب، قاعات تدريب، فعاليات ومجتمع."
+    },
+    "team": {
+      "title": "فريق المجرة | المجرة",
+      "description": "تعرّف على فريق المجرة، أول مساحة عمل مشتركة بالشرقية، ولوحة الشرف لأول من بدأوا حكايتها."
+    }
+  },
+  "en": {
+    "home": {
+      "title": "AlMejarra | The first coworking space in Sharqia",
+      "description": "AlMejarra is a coworking space and community hub in Zagazig, Egypt, for entrepreneurs, freelancers, students and tech geeks. Desks, training rooms, events and community."
+    },
+    "team": {
+      "title": "The AlMejarra team | AlMejarra",
+      "description": "Meet the team behind AlMejarra, the first coworking space in Sharqia, and the honors board of the first crew who started its story."
+    }
+  }
+}

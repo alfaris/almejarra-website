@@ -1,37 +1,29 @@
-import { site } from './site'
+import { founderLinks, site } from './site'
+import pageMeta from './meta.json'
 import type { Content } from './types'
 
 const network: Content['network']['groups'] = [
   {
     title: 'Cairo & Giza',
     items: [
-      { name: 'Qafeer', city: '6th of October', href: 'https://www.facebook.com/qafeerlabs' },
-      { name: 'Eco', city: 'Heliopolis', href: 'https://www.facebook.com/Ecocoworking' },
-      { name: 'Chefchaoun', city: 'Dokki', href: 'https://www.facebook.com/ChefchaounCo' },
-      { name: 'Al Maqarr', city: 'Heliopolis', href: 'https://www.facebook.com/AlMaqarr' },
-      { name: '302Labs', city: 'Nasr City', href: 'https://www.facebook.com/302Labs' },
-      { name: 'Dekka', city: 'Mokattam', href: 'https://www.facebook.com/DecaAdef' },
+      { name: 'MQR (formerly Al Maqarr)', city: 'Heliopolis, New Cairo, Downtown, Maadi, October', href: 'https://www.mqrspaces.com' },
+      { name: 'The GrEEK Campus', city: 'Downtown Cairo', href: 'https://thegreekcampus.com' },
+      { name: 'Makanak', city: 'Branches across Cairo & Giza', href: 'https://www.coworker.com/egypt/cairo/makanak-office-space' },
+      { name: '302Labs', city: 'Nasr City', href: 'https://www.coworker.com/egypt/cairo/302labs' },
     ],
   },
   {
     title: 'Governorates',
     items: [
-      { name: 'M3mal', city: 'Alexandria', href: 'https://www.facebook.com/m3mal' },
-      { name: 'Monk Space', city: 'Mansoura', href: 'https://www.facebook.com/MonkSpace.eg/' },
-      { name: 'Al Makkan', city: 'Menoufia', href: 'https://www.facebook.com/AlMakkan' },
-      { name: 'Cloud', city: 'Minya', href: 'https://www.facebook.com/cloudcoworking' },
-      { name: 'Mok3b', city: 'Ismailia', href: 'https://www.facebook.com/mok3b' },
-      { name: 'Boulevard', city: 'Port Said', href: 'https://www.facebook.com/Boulevardportsaid' },
+      { name: 'Flux', city: 'Alexandria', href: 'https://www.coworker.com/egypt/alexandria/flux-coworking-space' },
+      { name: 'Mok3b', city: 'Ismailia', href: 'https://www.coworker.com/egypt/ismailia/mok3b' },
+      { name: 'Rework', city: 'Mansoura', href: 'https://www.coworker.com/egypt/mansoura/rework-coworking-space' },
     ],
   },
 ]
 
 export const en: Content = {
-  meta: {
-    title: 'AlMejarra | The first coworking space in Sharqia',
-    description:
-      'AlMejarra is a coworking space and community hub in Zagazig, Egypt, for entrepreneurs, freelancers, students and tech geeks. Desks, training rooms, events and community.',
-  },
+  meta: { ...pageMeta.en.home, team: pageMeta.en.team },
   brand: { name: 'AlMejarra', tagline: 'Coworking Space' },
   nav: {
     links: [
@@ -42,13 +34,14 @@ export const en: Content = {
       { id: 'faq', label: 'FAQ' },
       { id: 'contact', label: 'Contact' },
     ],
+    team: 'Team',
     book: 'Book a spot',
     switchLang: 'العربية',
     menu: 'Menu',
     close: 'Close',
   },
   hero: {
-    eyebrow: 'Zagazig · Since 2015',
+    eyebrow: 'AlMejarra · Since 2014',
     title: ['The first coworking', 'space in Sharqia'],
     subtitle:
       'Where the comfort of home meets the focus of work. A community of entrepreneurs, freelancers, students and tech geeks who work, learn and grow together.',
@@ -77,7 +70,7 @@ export const en: Content = {
       { value: 2015, label: 'Year we launched' },
       { value: 60, label: 'Guests for events' },
       { value: 40, label: 'Seats in the Shuttle' },
-      { value: 12, suffix: '+', label: 'Partner spaces in Egypt' },
+      { value: 4, label: 'Spaces for every way of working' },
     ],
     pillars: [
       {
@@ -96,6 +89,8 @@ export const en: Content = {
         text: 'The right room and the right tools for talks, meetings and events, whether you are an initiative, a team, a startup or a volunteer group.',
       },
     ],
+    reelLabel: 'Watch AlMejarra on Instagram',
+    reelPlay: 'Play the AlMejarra video',
   },
   spaces: {
     eyebrow: 'Spaces',
@@ -114,7 +109,7 @@ export const en: Content = {
           { icon: 'printer', label: 'Printer & scanner' },
           { icon: 'armchair', label: 'IKEA furniture & bean bags' },
         ],
-        image: site.images.space,
+        image: site.images.spaceRoom,
         cta: 'Book a desk',
       },
       {
@@ -211,51 +206,126 @@ export const en: Content = {
       { icon: 'sun', title: 'Light & air', text: 'Garden views, sunlight and a breeze that calms your nerves.' },
     ],
   },
+  gallery: {
+    eyebrow: 'Take a look',
+    title: 'Inside AlMejarra',
+    items: [
+      { src: site.images.spaceRoom, alt: 'The Space: colourful desks, bean bags and an open floor' },
+      { src: site.images.shuttle, alt: 'The Shuttle room door, painted with its name and stars' },
+      { src: site.images.space, alt: 'Chairs and desks in The Space' },
+      { src: site.images.openingBalloon, alt: 'A balloon with the AlMejarra logo' },
+      { src: site.images.spaceWide, alt: 'A wide view of The Space' },
+    ],
+  },
+  events: {
+    eyebrow: 'Events',
+    title: 'Upcoming at AlMejarra',
+    subtitle: 'Workshops, meetups and bootcamps for the AlMejarra community.',
+    emptyTitle: 'No events announced right now',
+    emptyText: 'Follow our Facebook page to hear about new events first.',
+    follow: 'AlMejarra events on Facebook',
+    host: 'Host your event here',
+    details: 'Details & registration',
+  },
+  reviews: { eyebrow: 'From our members', title: 'What people say about AlMejarra' },
   story: {
     eyebrow: 'Mission log',
     title: 'From the Big Bang to a new launch',
     items: [
+      { date: 'Aug 25, 2014', title: 'The beginning', text: 'We started the AlMejarra journey and began preparing the first coworking space in Sharqia.' },
       { date: 'Jan 12, 2015', title: 'Launch', text: 'AlMejarra lifted off from its first home in 10th of Ramadan City.' },
       { date: 'Mar 2015', title: 'The Big Bang', text: 'The official opening, at an event called “The Big Bang”.' },
-      { date: 'Dec 2015', title: 'A new launch', text: 'AlMejarra moved to University Villas in Zagazig and reopened with an event called “A New Launch”.' },
+      { date: 'Dec 2015', title: 'A new launch', text: 'We opened AlMejarra in University Villas, Zagazig, with an event called “A New Launch”, then closed the 10th of Ramadan branch and settled in Zagazig.' },
       { date: 'Today', title: 'Still orbiting', text: 'The first community for geeks, freelancers and entrepreneurs in Sharqia, and still growing.' },
     ],
   },
   team: {
     eyebrow: 'AlMejarra astronauts',
-    title: 'The founders',
-    subtitle: 'AlMejarra was built by a group of people who came together, learned from volunteering, and wanted to see real impact in their community.',
+    title: 'Owners & founders',
+    subtitle: 'Ahmed Fares launched AlMejarra with its first crew; Amr Herzo and Waleed Abdelhamid later joined as founders.',
     members: [
       {
         name: 'Ahmed Fares',
-        role: 'Co-founder & Creative Director',
+        role: 'Founder & Co-owner',
         bio: 'Web UI designer and developer focused on mobile UX. He sees entrepreneurship as a way of life and wants AlMejarra to leave a mark and spread knowledge everywhere.',
         image: site.images.teamAhmed,
+        links: founderLinks.ahmed,
       },
       {
         name: 'Amr Herzo',
         role: 'Co-founder & CEO',
         bio: 'SAP consultant passionate about business intelligence and big data. He believes opportunities are made more than they are found, and in teamwork and community.',
         image: site.images.teamAmr,
+        links: founderLinks.amr,
       },
       {
         name: 'Waleed Abdelhamid',
         role: 'Co-founder',
         bio: 'Independent lawyer and legal counsel to several companies. He believes in independent work and community, and that commitment to value and quality drives success.',
         image: site.images.teamWaleed,
+        links: founderLinks.waleed,
       },
     ],
+    linkLabels: { website: 'Website', facebook: 'Facebook', linkedin: 'LinkedIn', x: 'X', instagram: 'Instagram', youtube: 'YouTube' },
+    teamLink: 'Meet the team & honors board',
     join: {
       title: 'Join the AlMejarra crew',
       text: 'Into marketing, community building, event planning, design or photography? Come build with us.',
       cta: 'Join the team',
     },
-    media: { title: 'AlMejarra in the media', items: ['Bebasata Magazine', 'Moheet', 'Radio Resala', 'Egypt Innovate'] },
+    media: {
+      title: 'AlMejarra in the media',
+      items: [
+        { name: 'Bebasata Magazine', href: 'https://www.facebook.com/BeBasataMag/posts/892681924143854' },
+        { name: 'Moheet', href: 'http://moheet.com/2015/03/28/2241314/المجرة-أول-مساحة-عمل-مشتركة-في-الشرقي.html' },
+        { name: 'Radio Resala', href: 'https://www.youtube.com/watch?v=XK3UR_DppZY' },
+        { name: 'Al Borsa News', href: 'https://www.alborsaanews.com/2018/02/28/1089159' },
+        { name: 'Egypt Innovate', href: 'http://egyptinnovate.com/users/almejarra-coworking-space' },
+      ],
+    },
+  },
+  teamPage: {
+    eyebrow: 'AlMejarra astronauts',
+    title: 'The AlMejarra team',
+    subtitle: 'The people who run AlMejarra and serve its community, and the first crew who started its story.',
+    back: 'Home',
+    crew: {
+      title: 'The team',
+      members: [
+        { name: 'Israa Mohamed', role: 'Operations & front desk', image: site.images.staff.israa },
+        { name: 'Saraa Adel El-Taher', role: 'Creative & photographer', image: site.images.staff.saraa },
+        { name: 'Hend', role: 'Front desk' },
+        { name: 'Ahmed Mokhtar', role: 'Social media marketing', image: site.images.staff.mokhtar },
+        { name: 'Ashraf Fares', role: 'Tech lead', image: site.images.staff.ashraf },
+        { name: 'Asmaa Farag', role: 'Events & community volunteer', image: site.images.staff.asmaa },
+        { name: 'Aya Ashraf El-Ghanam', role: 'Social media marketing', image: site.images.staff.aya },
+        { name: 'Sara Diaa', role: 'Social media marketing', image: site.images.staff.sara },
+      ],
+    },
+    honors: {
+      title: 'Honors board',
+      intro: [
+        'AlMejarra was built by a group of people who came together and learned a lot from volunteering, which led them to pool their ideas and effort to build the AlMejarra community, a big challenge and a first in Sharqia.',
+        'Life moves on, but AlMejarra will never forget the first people who started its story, helped it exist, supported the community around them and left a lasting mark.',
+      ],
+      photoAlt: "AlMejarra's first crew at the space",
+      members: [
+        { name: 'Nada Nagib Eldek', role: 'Co-founder, former Operations Manager', image: site.images.honors.nada },
+        { name: 'Rehab Ahmed', role: 'Former Community Manager', image: site.images.honors.rehab },
+        { name: 'Hassan Safwat Nour El-Din', role: 'Former Community Builder', image: site.images.honors.hassan },
+        { name: 'Islam Mohamed Salmy', role: 'Former HR Manager', image: site.images.honors.islam },
+        { name: 'Yousry Gamal', role: 'Designer of the AlMejarra logo & identity', image: site.images.honors.yousry },
+        { name: 'Ahmed Sami', role: 'Former Social Media Manager', image: site.images.honors.sami },
+        { name: 'Omar Hamdan', role: 'Former Events Coordinator', image: site.images.honors.omar },
+        { name: 'Mohamed Mahmoud', role: 'Former Front Desk', image: site.images.honors.mohamed },
+        { name: 'Nesma Essam', role: 'HR team', image: site.images.honors.nesma },
+      ],
+    },
   },
   network: {
     eyebrow: 'Stronger together',
     title: 'A constellation of coworking spaces',
-    subtitle: 'AlMejarra is part of a bigger network. Meet other coworking spaces across Egypt.',
+    subtitle: 'AlMejarra is part of a wider coworking scene in Egypt. These spaces were still operating when we last checked (October 2026).',
     groups: network,
   },
   faq: {
@@ -264,7 +334,7 @@ export const en: Content = {
     items: [
       {
         q: 'How and when did you start?',
-        a: 'AlMejarra launched on January 12, 2015 in 10th of Ramadan City, with an official opening event called “The Big Bang” in March 2015. In December 2015 we moved to Zagazig and reopened with an event called “A New Launch”.',
+        a: 'We started the AlMejarra journey on August 25, 2014, and launched on January 12, 2015 in 10th of Ramadan City, with an official opening event called “The Big Bang” in March 2015. In December 2015 we opened in Zagazig with an event called “A New Launch”, then closed the 10th of Ramadan branch; Zagazig has been our home ever since.',
       },
       {
         q: 'Who are you?',
@@ -326,6 +396,7 @@ export const en: Content = {
       note: 'Nothing is stored on this website; your message opens in WhatsApp or your email app.',
     },
   },
+  whatsappFab: { label: 'Chat on WhatsApp', message: 'Hi AlMejarra, I would like to ask about' },
   footer: {
     about:
       'The first coworking space in Sharqia, and a community hub for entrepreneurs, freelancers, tech geeks and students.',

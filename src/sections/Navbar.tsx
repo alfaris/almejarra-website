@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button'
 import { Sheet, SheetContent, SheetDescription, SheetTitle, SheetTrigger } from '@/components/ui/sheet'
 import { site } from '@/content/site'
 import { useI18n } from '@/lib/i18n'
+import { hrefFor, navigate, onLinkClick, useRoute } from '@/lib/router'
 import { scrollToId } from '@/lib/scroll'
 import { cn } from '@/lib/utils'
 
@@ -24,10 +25,14 @@ export function Logo({ className }: { className?: string }) {
 }
 
 export function Navbar() {
-  const { t, toggleLang, lang } = useI18n()
+  const { t, toggleLang, lang, otherLangHref } = useI18n()
   const [scrolled, setScrolled] = useState(false)
   const [active, setActive] = useState('')
   const [menuOpen, setMenuOpen] = useState(false)
+  const route = useRoute()
+  const teamHref = hrefFor(lang, 'team')
+  // On the team page, section links point at the home page so they also work as plain links.
+  const sectionHref = (id: string) => (route === 'home' ? `#${id}` : hrefFor(lang, 'home', id))
   const { scrollY, scrollYProgress } = useScroll()
   useMotionValueEvent(scrollY, 'change', (y) => setScrolled(y > 40))
 
@@ -42,7 +47,8 @@ export function Navbar() {
       if (el) io.observe(el)
     })
     return () => io.disconnect()
-  }, [t])
+  }, [t, route])
+  const current = route === 'team' ? 'team' : active
 
   const go = (id: string) => (e: React.MouseEvent) => {
     e.preventDefault()
@@ -53,8 +59,15 @@ export function Navbar() {
   const goFromMenu = (id: string) => (e: React.MouseEvent) => {
     e.preventDefault()
     setMenuOpen(false)
-    setTimeout(() => scrollToId(id), 320)
+    setTimeout(() => (id === 'team' ? navigate(teamHref) : scrollToId(id)), 320)
   }
+
+  const linkClass = (id: string) =>
+    cn('relative rounded-full px-3.5 py-2 text-sm text-white/75 transition hover:text-white', current === id && 'text-white')
+  const pill = (id: string) =>
+    current === id && (
+      <motion.span layoutId="nav-pill" className="absolute inset-0 -z-10 rounded-full bg-white/10" transition={{ type: 'spring', bounce: 0.25, duration: 0.5 }} />
+    )
 
   return (
     <header
@@ -64,36 +77,41 @@ export function Navbar() {
       )}
     >
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-4 px-4 md:h-[72px] md:px-8">
-        <a href="#top" onClick={go('top')} aria-label={t.brand.name}>
+        <a href={hrefFor(lang, 'home')} onClick={go('top')}>
           <Logo />
         </a>
 
         <nav className="hidden items-center gap-1 lg:flex" aria-label="Main">
           {t.nav.links.map((l) => (
-            <a
-              key={l.id}
-              href={`#${l.id}`}
-              onClick={go(l.id)}
-              className={cn(
-                'relative rounded-full px-3.5 py-2 text-sm text-white/75 transition hover:text-white',
-                active === l.id && 'text-white',
-              )}
-            >
-              {active === l.id && (
-                <motion.span layoutId="nav-pill" className="absolute inset-0 -z-10 rounded-full bg-white/10" transition={{ type: 'spring', bounce: 0.25, duration: 0.5 }} />
-              )}
+            <a key={l.id} href={sectionHref(l.id)} onClick={go(l.id)} className={linkClass(l.id)}>
+              {pill(l.id)}
               {l.label}
             </a>
           ))}
+          <a href={teamHref} onClick={onLinkClick(teamHref)} className={linkClass('team')} aria-current={route === 'team' ? 'page' : undefined}>
+            {pill('team')}
+            {t.nav.team}
+          </a>
         </nav>
 
         <div className="flex items-center gap-2">
-          <Button variant="ghost" size="sm" onClick={toggleLang} className="text-white" lang={lang === 'ar' ? 'en' : 'ar'}>
-            <Languages />
-            {t.nav.switchLang}
+          <Button variant="ghost" size="sm" className="text-white" asChild>
+            <a
+              href={otherLangHref}
+              hrefLang={lang === 'ar' ? 'en' : 'ar'}
+              lang={lang === 'ar' ? 'en' : 'ar'}
+              onClick={(e) => {
+                if (e.metaKey || e.ctrlKey || e.shiftKey) return
+                e.preventDefault()
+                toggleLang()
+              }}
+            >
+              <Languages />
+              {t.nav.switchLang}
+            </a>
           </Button>
           <Button variant="star" size="sm" className="hidden sm:inline-flex" asChild>
-            <a href="#contact" onClick={go('contact')}>
+            <a href={sectionHref('contact')} onClick={go('contact')}>
               {t.nav.book}
             </a>
           </Button>
@@ -112,7 +130,7 @@ export function Navbar() {
                 {t.nav.links.map((l, i) => (
                   <a
                     key={l.id}
-                    href={`#${l.id}`}
+                    href={sectionHref(l.id)}
                     onClick={goFromMenu(l.id)}
                     className="flex items-baseline gap-3 rounded-xl px-3 py-3 font-display text-2xl transition hover:bg-white/5"
                   >
@@ -120,9 +138,17 @@ export function Navbar() {
                     {l.label}
                   </a>
                 ))}
+                <a
+                  href={teamHref}
+                  onClick={goFromMenu('team')}
+                  className="flex items-baseline gap-3 rounded-xl px-3 py-3 font-display text-2xl transition hover:bg-white/5"
+                >
+                  <span className="text-xs text-star tabular-nums">0{t.nav.links.length + 1}</span>
+                  {t.nav.team}
+                </a>
               </nav>
               <Button variant="star" size="lg" className="mt-auto" asChild>
-                <a href="#contact" onClick={goFromMenu('contact')}>
+                <a href={sectionHref('contact')} onClick={goFromMenu('contact')}>
                   {t.nav.book}
                 </a>
               </Button>

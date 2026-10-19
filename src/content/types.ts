@@ -1,3 +1,5 @@
+import type { ProfileLink } from './site'
+
 export type Lang = 'ar' | 'en'
 
 export type IconName =
@@ -31,6 +33,13 @@ export interface SpaceItem {
   cta: string
 }
 
+export interface Person {
+  name: string
+  role: string
+  /** Without a photo, a placeholder avatar is shown. */
+  image?: string
+}
+
 export interface PackageItem {
   id: string
   name: string
@@ -42,10 +51,12 @@ export interface PackageItem {
 }
 
 export interface Content {
-  meta: { title: string; description: string }
+  /** Page titles and descriptions; edit them in meta.json (also used to generate the HTML pages). */
+  meta: { title: string; description: string; team: { title: string; description: string } }
   brand: { name: string; tagline: string }
   nav: {
     links: { id: string; label: string }[]
+    team: string
     book: string
     switchLang: string
     menu: string
@@ -69,10 +80,30 @@ export interface Content {
     mission: { title: string; text: string }
     stats: { value: number; suffix?: string; label: string }[]
     pillars: { icon: IconName; title: string; text: string }[]
+    /** Link to the reel on Instagram, and the play button's accessible name. */
+    reelLabel: string
+    reelPlay: string
   }
   spaces: { eyebrow: string; title: string; subtitle: string; items: SpaceItem[] }
   packages: { eyebrow: string; title: string; subtitle: string; items: PackageItem[]; note: string; cta: string }
   why: { eyebrow: string; title: string; items: { icon: IconName; title: string; text: string }[] }
+  gallery: {
+    eyebrow: string
+    title: string
+    /** Bento order: room, shuttle, chairs, balloon, wide. */
+    items: { src: string; alt: string }[]
+  }
+  events: {
+    eyebrow: string
+    title: string
+    subtitle: string
+    emptyTitle: string
+    emptyText: string
+    follow: string
+    host: string
+    details: string
+  }
+  reviews: { eyebrow: string; title: string }
   story: {
     eyebrow: string
     title: string
@@ -81,10 +112,23 @@ export interface Content {
   team: {
     eyebrow: string
     title: string
-    subtitle: string
-    members: { name: string; role: string; bio: string; image: string }[]
+    subtitle?: string
+    members: { name: string; role: string; bio: string; image: string; links: ProfileLink[] }[]
+    /** Accessible names for profile links, e.g. "Website"; brand names are used for the rest. */
+    linkLabels: { website: string; facebook: string; linkedin: string; x: string; instagram: string; youtube: string }
+    /** Link to the team page. */
+    teamLink: string
     join: { title: string; text: string; cta: string }
-    media: { title: string; items: string[] }
+    media: { title: string; items: { name: string; href: string }[] }
+  }
+  teamPage: {
+    eyebrow: string
+    title: string
+    subtitle: string
+    back: string
+    crew: { title: string; members: Person[] }
+    /** The first crew who built AlMejarra with its founder (the old site's honors board). */
+    honors: { title: string; intro: string[]; photoAlt: string; members: Person[] }
   }
   network: {
     eyebrow: string
@@ -121,5 +165,6 @@ export interface Content {
       intro: string
     }
   }
+  whatsappFab: { label: string; message: string }
   footer: { about: string; rights: string; backToTop: string; madeWith: string }
 }

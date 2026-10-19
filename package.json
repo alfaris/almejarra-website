@@ -4,14 +4,14 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "tsc -b && vite build",
+    "dev": "npm run pages && vite",
+    "pages": "node scripts/pages.mjs",
+    "build": "npm run pages && tsc -b && vite build",
+    "build:standalone": "npm run pages && tsc -b && vite build --mode standalone --outDir dist-standalone",
     "lint": "oxlint",
-    "preview": "vite preview",
-    "build:split": "tsc -b && vite build --mode split"
+    "preview": "vite preview"
   },
   "dependencies": {
-    "@react-three/fiber": "^9.8.2",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "lenis": "^1.3.27",

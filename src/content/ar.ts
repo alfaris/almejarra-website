@@ -1,37 +1,29 @@
-import { site } from './site'
+import { founderLinks, site } from './site'
+import pageMeta from './meta.json'
 import type { Content } from './types'
 
 const network: Content['network']['groups'] = [
   {
     title: 'القاهرة والجيزة',
     items: [
-      { name: 'قفير', city: '6 أكتوبر', href: 'https://www.facebook.com/qafeerlabs' },
-      { name: 'إيكو', city: 'مصر الجديدة', href: 'https://www.facebook.com/Ecocoworking' },
-      { name: 'شفشاون', city: 'الدقي', href: 'https://www.facebook.com/ChefchaounCo' },
-      { name: 'المقر', city: 'مصر الجديدة', href: 'https://www.facebook.com/AlMaqarr' },
-      { name: '302Labs', city: 'مدينة نصر', href: 'https://www.facebook.com/302Labs' },
-      { name: 'دكة', city: 'المقطم', href: 'https://www.facebook.com/DecaAdef' },
+      { name: 'MQR (المقر سابقاً)', city: 'مصر الجديدة، التجمع، وسط البلد، المعادي، أكتوبر', href: 'https://www.mqrspaces.com' },
+      { name: 'The GrEEK Campus', city: 'وسط البلد', href: 'https://thegreekcampus.com' },
+      { name: 'مكانك', city: 'فروع في القاهرة والجيزة', href: 'https://www.coworker.com/egypt/cairo/makanak-office-space' },
+      { name: '302Labs', city: 'مدينة نصر', href: 'https://www.coworker.com/egypt/cairo/302labs' },
     ],
   },
   {
     title: 'المحافظات',
     items: [
-      { name: 'معمل', city: 'الإسكندرية', href: 'https://www.facebook.com/m3mal' },
-      { name: 'مونك سبيس', city: 'المنصورة', href: 'https://www.facebook.com/MonkSpace.eg/' },
-      { name: 'المكان', city: 'المنوفية', href: 'https://www.facebook.com/AlMakkan' },
-      { name: 'كلاود', city: 'المنيا', href: 'https://www.facebook.com/cloudcoworking' },
-      { name: 'مكعب', city: 'الإسماعيلية', href: 'https://www.facebook.com/mok3b' },
-      { name: 'بوليفار', city: 'بورسعيد', href: 'https://www.facebook.com/Boulevardportsaid' },
+      { name: 'Flux', city: 'الإسكندرية', href: 'https://www.coworker.com/egypt/alexandria/flux-coworking-space' },
+      { name: 'مكعب', city: 'الإسماعيلية', href: 'https://www.coworker.com/egypt/ismailia/mok3b' },
+      { name: 'Rework', city: 'المنصورة', href: 'https://www.coworker.com/egypt/mansoura/rework-coworking-space' },
     ],
   },
 ]
 
 export const ar: Content = {
-  meta: {
-    title: 'المجرة | أول مساحة عمل مشتركة بالشرقية',
-    description:
-      'المجرة مساحة عمل مشتركة ومركز مجتمعي في الزقازيق لرواد الأعمال وأصحاب العمل الحر والطلاب ومهاويس التقنية. مكاتب، قاعات تدريب، فعاليات ومجتمع.',
-  },
+  meta: { ...pageMeta.ar.home, team: pageMeta.ar.team },
   brand: { name: 'المجرة', tagline: 'مساحة عمل مشتركة' },
   nav: {
     links: [
@@ -42,13 +34,14 @@ export const ar: Content = {
       { id: 'faq', label: 'أسئلة' },
       { id: 'contact', label: 'تواصل' },
     ],
+    team: 'الفريق',
     book: 'احجز مكانك',
     switchLang: 'English',
     menu: 'القائمة',
     close: 'إغلاق',
   },
   hero: {
-    eyebrow: 'الزقازيق · منذ 2015',
+    eyebrow: 'المجرة · منذ 2014',
     title: ['أول مساحة عمل', 'مشتركة بالشرقية'],
     subtitle:
       'مكان يجمع بين راحة البيت وجو الشغل والإنتاج. مجتمع لرواد الأعمال وأصحاب العمل الحر والطلاب ومهاويس التقنية، بنشتغل ونتعلم ونكبر سوا.',
@@ -77,7 +70,7 @@ export const ar: Content = {
       { value: 2015, label: 'سنة الانطلاق' },
       { value: 60, label: 'فرد سعة الفضاء للفعاليات' },
       { value: 40, label: 'مقعد في قاعة المكوك' },
-      { value: 12, suffix: '+', label: 'مساحة شريكة في مصر' },
+      { value: 4, label: 'مساحات لكل طريقة شغل' },
     ],
     pillars: [
       {
@@ -96,6 +89,8 @@ export const ar: Content = {
         text: 'مساحة مثالية بالأدوات المناسبة لتنظيم المحاضرات والاجتماعات والفعاليات، سواء كنتم مبادرة أو فريق أو شركة ناشئة.',
       },
     ],
+    reelLabel: 'شاهد المجرة على إنستجرام',
+    reelPlay: 'تشغيل فيديو المجرة',
   },
   spaces: {
     eyebrow: 'المساحات',
@@ -114,7 +109,7 @@ export const ar: Content = {
           { icon: 'printer', label: 'طابعة وسكانر' },
           { icon: 'armchair', label: 'أثاث إيكيا وكراسي بين باج' },
         ],
-        image: site.images.space,
+        image: site.images.spaceRoom,
         cta: 'احجز مكتبك',
       },
       {
@@ -211,51 +206,126 @@ export const ar: Content = {
       { icon: 'sun', title: 'ضوء وهوا', text: 'إطلالة على الحدائق وضوء الشمس ونسمة هوا بتريّح أعصابك.' },
     ],
   },
+  gallery: {
+    eyebrow: 'من جوه',
+    title: 'جوه المجرة',
+    items: [
+      { src: site.images.spaceRoom, alt: 'فضاء المجرة: مكاتب ملونة وكراسي بين باج ومساحة مفتوحة' },
+      { src: site.images.shuttle, alt: 'باب قاعة المكوك مرسوم عليه اسمها والنجوم' },
+      { src: site.images.space, alt: 'كراسي ومكاتب في فضاء المجرة' },
+      { src: site.images.openingBalloon, alt: 'بالونة عليها شعار المجرة' },
+      { src: site.images.spaceWide, alt: 'لقطة واسعة لفضاء المجرة' },
+    ],
+  },
+  events: {
+    eyebrow: 'الفعاليات',
+    title: 'فعاليات جاية في المجرة',
+    subtitle: 'ورش عمل ولقاءات ومعسكرات تدريبية لمجتمع المجرة.',
+    emptyTitle: 'مفيش فعاليات معلنة دلوقتي',
+    emptyText: 'تابع صفحتنا على فيسبوك عشان تعرف الفعاليات الجديدة أول بأول.',
+    follow: 'فعاليات المجرة على فيسبوك',
+    host: 'نظّم فعاليتك عندنا',
+    details: 'التفاصيل والتسجيل',
+  },
+  reviews: { eyebrow: 'آراء رواد المجرة', title: 'بيقولوا إيه عن المجرة' },
   story: {
     eyebrow: 'سجل الرحلة',
     title: 'من الانفجار العظيم لانطلاقة جديدة',
     items: [
+      { date: '25 أغسطس 2014', title: 'البداية', text: 'بدأنا رحلة المجرة وبدأنا نجهز لأول مساحة عمل مشتركة في الشرقية.' },
       { date: '12 يناير 2015', title: 'الإطلاق', text: 'انطلقت المجرة من مقرها الأول في مدينة العاشر من رمضان.' },
       { date: 'مارس 2015', title: 'The Big Bang', text: 'الافتتاح الرسمي في حدث بعنوان «الانفجار العظيم».' },
-      { date: 'ديسمبر 2015', title: 'انطلاقة جديدة', text: 'انتقلت المجرة بالكامل للزقازيق في فلل الجامعة، وافتتحناها في إيفنت «إنطلاقة جديدة».' },
+      { date: 'ديسمبر 2015', title: 'انطلاقة جديدة', text: 'افتتحنا فرع المجرة في الزقازيق بفلل الجامعة في إيفنت «إنطلاقة جديدة»، وبعدها قفلنا فرع العاشر من رمضان واستقرينا في الزقازيق.' },
       { date: 'النهارده', title: 'مجتمع مستمر', text: 'أول مجتمع للجيكس وأصحاب العمل المستقل ورواد الأعمال في الشرقية، ولسه بنكبر.' },
     ],
   },
   team: {
     eyebrow: 'رواد فضاء المجرة',
-    title: 'المؤسسين',
-    subtitle: 'المجرة اتبنت بإيدين مجموعة اتجمعوا سوا، اتعلموا من التطوع، وحلموا يشوفوا تأثير حقيقي في مجتمعهم.',
+    title: 'الملاك والمؤسسين',
+    subtitle: 'أحمد فارس أطلق المجرة مع أول فريق ليها، وبعدها انضم عمرو حرزو ووليد عبد الحميد كمؤسسين.',
     members: [
       {
         name: 'أحمد فارس',
-        role: 'مؤسس ومدير الإبداع',
+        role: 'المؤسس والشريك المالك',
         bio: 'مصمم ومطور واجهات ويب ومختص بتجربة المستخدم. مؤمن بالريادة كأسلوب حياة، ونفسه المجرة تسيب بصمة وتنشر المعرفة في كل مكان.',
         image: site.images.teamAhmed,
+        links: founderLinks.ahmed,
       },
       {
         name: 'عمرو حرزو',
         role: 'مؤسس والمدير التنفيذي',
         bio: 'استشاري تطبيقات SAP وشغوف بالـ Business Intelligence والـ Big Data. مؤمن إن الفرص بتتصنع أكتر ما بتتقنص، وبروح الفريق والمشاركة المجتمعية.',
         image: site.images.teamAmr,
+        links: founderLinks.amr,
       },
       {
         name: 'وليد عبد الحميد',
         role: 'مؤسس',
         bio: 'محامي حر ومستشار قانوني لعدد من الشركات. بيؤمن بالعمل الحر والمشاركة المجتمعية، وشايف إن الالتزام بالقيمة والجودة أهم عوامل النجاح.',
         image: site.images.teamWaleed,
+        links: founderLinks.waleed,
       },
     ],
+    linkLabels: { website: 'الموقع الشخصي', facebook: 'Facebook', linkedin: 'LinkedIn', x: 'X', instagram: 'Instagram', youtube: 'YouTube' },
+    teamLink: 'تعرّف على الفريق ولوحة الشرف',
     join: {
       title: 'إنضم لرواد فضاء المجرة',
       text: 'عندك شغف بالتسويق أو بناء المجتمع أو تنظيم الأحداث أو التصميم أو التصوير؟ تعالى ساهم معانا.',
       cta: 'إنضم للفريق',
     },
-    media: { title: 'المجرة في الإعلام', items: ['مجلة ببساطة', 'شبكة محيط', 'راديو رسالة', 'Egypt Innovate'] },
+    media: {
+      title: 'المجرة في الإعلام',
+      items: [
+        { name: 'مجلة ببساطة', href: 'https://www.facebook.com/BeBasataMag/posts/892681924143854' },
+        { name: 'شبكة محيط', href: 'http://moheet.com/2015/03/28/2241314/المجرة-أول-مساحة-عمل-مشتركة-في-الشرقي.html' },
+        { name: 'راديو رسالة', href: 'https://www.youtube.com/watch?v=XK3UR_DppZY' },
+        { name: 'جريدة البورصة', href: 'https://www.alborsaanews.com/2018/02/28/1089159' },
+        { name: 'Egypt Innovate', href: 'http://egyptinnovate.com/users/almejarra-coworking-space' },
+      ],
+    },
+  },
+  teamPage: {
+    eyebrow: 'رواد فضاء المجرة',
+    title: 'فريق المجرة',
+    subtitle: 'الناس اللي بتشغّل المجرة وبتخدم مجتمعها، وأول من بدأوا حكايتها.',
+    back: 'الرئيسية',
+    crew: {
+      title: 'الفريق',
+      members: [
+        { name: 'إسراء محمد', role: 'مسئولة التشغيل والاستقبال', image: site.images.staff.israa },
+        { name: 'سراء عادل الطاهر', role: 'مبدعة المجرة ومصورة فوتوغرافية', image: site.images.staff.saraa },
+        { name: 'هند', role: 'الاستقبال' },
+        { name: 'أحمد مختار', role: 'سوشيال ميديا ماركتينج', image: site.images.staff.mokhtar },
+        { name: 'أشرف فارس', role: 'المسئول التقني', image: site.images.staff.ashraf },
+        { name: 'أسماء فراج', role: 'متطوعة في تنظيم الأحداث وبناء المجتمع', image: site.images.staff.asmaa },
+        { name: 'آية أشرف الغنام', role: 'سوشيال ميديا ماركتينج', image: site.images.staff.aya },
+        { name: 'سارة ضياء', role: 'سوشيال ميديا ماركتينج', image: site.images.staff.sara },
+      ],
+    },
+    honors: {
+      title: 'لوحة الشرف',
+      intro: [
+        'المجرة اتبنت بإيدين مجموعة اتجمعوا سوا، اتعلموا من التطوع حاجات كتير حلوة خلتهم يجمعوا أفكارهم ومجهودهم عشان يبنوا مجتمع المجرة، اللي كان تحدي كبير ولأول مرة في الشرقية.',
+        'ظروف الحياة مش بتدوم على حال، لكن المجرة لا يمكن تنسى أول من بدأوا حكايتها وساهموا في وجودها وساعدوا المجتمع من حواليهم وسابوا فعلاً عظيم الأثر.',
+      ],
+      photoAlt: 'أول فريق المجرة في مقرها',
+      members: [
+        { name: 'ندى نجيب الدق', role: 'مؤسسة ومديرة التشغيل والعمليات سابقاً', image: site.images.honors.nada },
+        { name: 'رحاب أحمد', role: 'مديرة المجتمع سابقاً', image: site.images.honors.rehab },
+        { name: 'حسن صفوت نور الدين', role: 'مسئول بناء المجتمع سابقاً', image: site.images.honors.hassan },
+        { name: 'إسلام محمد سلمي', role: 'مدير الموارد البشرية سابقاً', image: site.images.honors.islam },
+        { name: 'يسري جمال', role: 'مصمم شعار وهوية المجرة', image: site.images.honors.yousry },
+        { name: 'أحمد سامي', role: 'مدير الشبكات الاجتماعية سابقاً', image: site.images.honors.sami },
+        { name: 'عُمر حمدان', role: 'مسئول تنظيم الأحداث سابقاً', image: site.images.honors.omar },
+        { name: 'محمد محمود', role: 'مسئول الاستقبال سابقاً', image: site.images.honors.mohamed },
+        { name: 'نسمة عصام', role: 'فريق الموارد البشرية', image: site.images.honors.nesma },
+      ],
+    },
   },
   network: {
     eyebrow: 'بنقوي المجتمع',
     title: 'كوكبة مساحات العمل المشتركة',
-    subtitle: 'المجرة جزء من شبكة أكبر. تعرّف على مساحات العمل المشتركة الأخرى في مصر.',
+    subtitle: 'المجرة جزء من مشهد أكبر لمساحات العمل المشتركة في مصر. دي مساحات لسه شغالة حسب آخر مراجعة لينا (أكتوبر 2026).',
     groups: network,
   },
   faq: {
@@ -264,7 +334,7 @@ export const ar: Content = {
     items: [
       {
         q: 'بدأتوا إزاي وإمتى؟',
-        a: 'المجرة انطلقت في 12 يناير 2015 من مقرها في العاشر من رمضان، وافتتاحها الرسمي كان في حدث بعنوان The Big Bang في مارس 2015. وفي ديسمبر 2015 اتنقلت بالكامل للزقازيق في بدايتها الجديدة، واللي افتتحناها في إيفنت بعنوان «إنطلاقة جديدة».',
+        a: 'بدأنا رحلة المجرة في 25 أغسطس 2014، وانطلقت المجرة في 12 يناير 2015 من مقرها في العاشر من رمضان، وافتتاحها الرسمي كان في حدث بعنوان The Big Bang في مارس 2015. وفي ديسمبر 2015 افتتحنا فرع الزقازيق في إيفنت بعنوان «إنطلاقة جديدة»، وبعدها قفلنا فرع العاشر من رمضان، ومن وقتها مقرنا في الزقازيق.',
       },
       {
         q: 'إنتوا مين؟',
@@ -326,6 +396,7 @@ export const ar: Content = {
       note: 'مفيش بيانات بتتخزن على الموقع؛ الرسالة بتتفتح في واتساب أو برنامج الإيميل عندك.',
     },
   },
+  whatsappFab: { label: 'كلمنا على واتساب', message: 'أهلاً المجرة، حابب أستفسر عن' },
   footer: {
     about:
       'أول مساحة عمل مشتركة في الشرقية، ومركز مجتمعي لرواد الأعمال وأصحاب الأعمال المستقلة ومهاويس التقنية والطلاب.',

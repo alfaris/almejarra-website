@@ -3,7 +3,7 @@ import * as React from 'react'
 import { cn } from '@/lib/utils'
 
 const fieldBase =
-  'w-full min-w-0 rounded-xl border border-white/15 bg-white/5 px-4 py-3 text-base text-white outline-none transition placeholder:text-white/40 focus-visible:border-star focus-visible:ring-[3px] focus-visible:ring-star/30 aria-invalid:border-rim-red md:text-sm'
+  'w-full min-w-0 rounded-xl border border-white/15 bg-white/5 px-4 py-3 text-base text-white outline-none transition placeholder:text-white/50 focus-visible:border-star focus-visible:ring-[3px] focus-visible:ring-star/30 aria-invalid:border-rim-red md:text-sm'
 
 function Input({ className, ...props }: React.ComponentProps<'input'>) {
   return <input data-slot="input" className={cn(fieldBase, 'h-12', className)} {...props} />
