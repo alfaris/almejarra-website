@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import Lenis from 'lenis'
 
 import { useReducedMotion } from '@/lib/useMediaQuery'
+import { WhatsAppFab } from '@/components/WhatsAppFab'
 import { useRoute } from '@/lib/router'
 import { scrollToId, scrollToTop, setLenis } from '@/lib/scroll'
 import { About } from '@/sections/About'
@@ -78,6 +79,7 @@ export default function App() {
         </main>
       )}
       <Footer />
+      <WhatsAppFab />
     </>
   )
 }

@@ -385,6 +385,7 @@ export const en: Content = {
       note: 'Nothing is stored on this website; your message opens in WhatsApp or your email app.',
     },
   },
+  whatsappFab: { label: 'Chat on WhatsApp', message: 'Hi AlMejarra, I would like to ask about' },
   footer: {
     about:
       'The first coworking space in Sharqia, and a community hub for entrepreneurs, freelancers, tech geeks and students.',

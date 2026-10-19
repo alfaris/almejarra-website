@@ -154,5 +154,6 @@ export interface Content {
       intro: string
     }
   }
+  whatsappFab: { label: string; message: string }
   footer: { about: string; rights: string; backToTop: string; madeWith: string }
 }
