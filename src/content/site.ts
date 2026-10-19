@@ -28,6 +28,15 @@ export const site = {
     teamAhmed: img('team-ahmed-fares.webp'),
     teamAmr: img('team-amr-herzo.webp'),
     teamWaleed: img('team-waleed.webp'),
+    staff: {
+      israa: img('team-israa.webp'),
+      saraa: img('team-saraa.webp'),
+      mokhtar: img('team-mokhtar.webp'),
+      ashraf: img('team-ashraf.webp'),
+      asmaa: img('team-asmaa.webp'),
+      aya: img('team-aya.webp'),
+      sara: img('team-sara.webp'),
+    },
     honors: {
       nada: img('honors-nada.webp'),
       rehab: img('honors-rehab.webp'),

@@ -1,20 +1,17 @@
 import { motion } from 'motion/react'
-import { Award, ExternalLink, Newspaper, Rocket } from 'lucide-react'
+import { ArrowRight, ExternalLink, Newspaper } from 'lucide-react'
 
+import { JoinCta } from '@/components/JoinCta'
 import { Reveal } from '@/components/Reveal'
 import { staggerChild, staggerParent } from '@/lib/motion'
 import { SectionHeading } from '@/components/SectionHeading'
 import { Button } from '@/components/ui/button'
 import { useI18n } from '@/lib/i18n'
-import { scrollToId } from '@/lib/scroll'
+import { TEAM_HASH } from '@/lib/router'
 
 export function Team() {
   const { t } = useI18n()
   const team = t.team
-  const join = () => {
-    window.dispatchEvent(new CustomEvent('almejarra:interest', { detail: t.contact.form.interestOptions[7] }))
-    scrollToId('contact')
-  }
   return (
     <section id="community" className="py-24 md:py-36">
       <div className="mx-auto max-w-7xl px-4 md:px-8">
@@ -48,58 +45,18 @@ export function Team() {
           ))}
         </motion.div>
 
-        <div className="mt-20 rounded-[2rem] bg-secondary p-6 md:p-12">
-          <div className="grid gap-10 lg:grid-cols-12">
-            <Reveal className="lg:col-span-4">
-              <Award className="mb-4 size-8 text-primary" aria-hidden />
-              <h3 className="font-display text-3xl font-semibold md:text-4xl">{team.honors.title}</h3>
-              <div className="mt-4 space-y-3 leading-relaxed text-muted-foreground">
-                {team.honors.intro.map((p) => (
-                  <p key={p}>{p}</p>
-                ))}
-              </div>
-            </Reveal>
-            <motion.ul
-              className="grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-3 lg:col-span-8"
-              variants={staggerParent}
-              initial="hidden"
-              whileInView="show"
-              viewport={{ once: true, margin: '-10% 0px' }}
-            >
-              {team.honors.members.map((m) => (
-                <motion.li key={m.name} variants={staggerChild} className="group flex flex-col items-center text-center">
-                  <div className="relative mb-3 size-24 md:size-28">
-                    <div className="rim-gradient absolute -inset-1 rounded-full opacity-0 transition-opacity duration-500 group-hover:opacity-100" aria-hidden />
-                    <img
-                      src={m.image}
-                      alt={m.name}
-                      loading="lazy"
-                      width={320}
-                      height={320}
-                      className="relative size-full rounded-full border-4 border-secondary object-cover grayscale transition duration-500 group-hover:grayscale-0"
-                    />
-                  </div>
-                  <p className="font-display font-semibold">{m.name}</p>
-                  <p className="mt-1 text-xs leading-snug text-muted-foreground">{m.role}</p>
-                </motion.li>
-              ))}
-            </motion.ul>
-          </div>
-        </div>
+        <Reveal className="mt-10">
+          <Button variant="outline" size="lg" asChild>
+            <a href={TEAM_HASH}>
+              {team.teamLink}
+              <ArrowRight className="rtl:-scale-x-100" />
+            </a>
+          </Button>
+        </Reveal>
 
         <div className="mt-10 grid gap-6 lg:grid-cols-3">
           <Reveal className="lg:col-span-2">
-            <div className="relative flex h-full flex-col justify-between gap-6 overflow-hidden rounded-[1.75rem] bg-nebula p-8 text-white md:flex-row md:items-center md:p-10">
-              <div className="rim-gradient absolute -end-20 -top-20 size-60 rounded-full opacity-40 blur-2xl" aria-hidden />
-              <div className="relative">
-                <Rocket className="mb-4 size-8 text-star" aria-hidden />
-                <h3 className="font-display text-3xl font-semibold">{team.join.title}</h3>
-                <p className="mt-2 max-w-lg text-white/80">{team.join.text}</p>
-              </div>
-              <Button variant="star" size="lg" className="relative" onClick={join}>
-                {team.join.cta}
-              </Button>
-            </div>
+            <JoinCta />
           </Reveal>
           <Reveal delay={0.1}>
             <div className="h-full rounded-[1.75rem] border p-8">

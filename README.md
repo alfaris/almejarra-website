@@ -5,6 +5,7 @@ A fully static redesign of [almejarra.com](https://almejarra.com), the first cow
 - **Arabic first (RTL)** with an English toggle (remembered per visitor, or forced with `?lang=en`).
 - **3D galaxy hero**: React Three Fiber spiral galaxy plus the logo ring. It pauses off-screen, respects `prefers-reduced-motion` and falls back to a gradient when WebGL is unavailable.
 - **Motion** reveals and scroll effects, **Lenis** smooth scrolling, and **shadcn/ui-style** components on Radix (Accordion, Sheet, Button, Badge, form fields).
+- **Two pages, no server**: the home page and a Team page (current team + honors board) at `#/team`. Hash routing keeps it working from `file://` and on any static host without rewrite rules.
 - **No-backend booking**: the contact form builds a pre-filled WhatsApp message (`wa.me`) or a `mailto:` email. Nothing is stored.
 
 ## Stack
@@ -48,8 +49,8 @@ Package prices currently read “Contact for pricing”. Change the `price` fiel
 src/
   components/      Icon, Reveal, SectionHeading, SocialIcon, three/Galaxy, ui/* (shadcn-style)
   content/         site facts + ar/en dictionaries
-  lib/             i18n provider, smooth-scroll helper, media-query hooks, motion variants
-  sections/        Navbar, Hero, Marquee, About, Spaces, Packages, Why, Story, Team, Network, Faq, Contact, Footer
+  lib/             i18n provider, hash router, smooth-scroll helper, media-query hooks, motion variants
+  sections/        Navbar, Hero, Marquee, About, Spaces, Packages, Why, Story, Team (owners & founders), Network, Faq, Contact, Footer, TeamPage
 ```
 
 Content, photos and team bios come from the original almejarra.com WordPress site.

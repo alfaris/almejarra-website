@@ -42,6 +42,7 @@ export const ar: Content = {
       { id: 'faq', label: 'أسئلة' },
       { id: 'contact', label: 'تواصل' },
     ],
+    team: 'الفريق',
     book: 'احجز مكانك',
     switchLang: 'English',
     menu: 'القائمة',
@@ -223,7 +224,7 @@ export const ar: Content = {
   },
   team: {
     eyebrow: 'رواد فضاء المجرة',
-    title: 'المؤسسين',
+    title: 'الملاك والمؤسسين',
     subtitle: 'أحمد فارس أطلق المجرة مع أول فريق ليها، وبعدها انضم عمرو حرزو ووليد عبد الحميد كمؤسسين.',
     members: [
       {
@@ -245,6 +246,40 @@ export const ar: Content = {
         image: site.images.teamWaleed,
       },
     ],
+    teamLink: 'تعرّف على الفريق ولوحة الشرف',
+    join: {
+      title: 'إنضم لرواد فضاء المجرة',
+      text: 'عندك شغف بالتسويق أو بناء المجتمع أو تنظيم الأحداث أو التصميم أو التصوير؟ تعالى ساهم معانا.',
+      cta: 'إنضم للفريق',
+    },
+    media: {
+      title: 'المجرة في الإعلام',
+      items: [
+        { name: 'مجلة ببساطة', href: 'https://www.facebook.com/BeBasataMag/posts/892681924143854' },
+        { name: 'شبكة محيط', href: 'http://moheet.com/2015/03/28/2241314/المجرة-أول-مساحة-عمل-مشتركة-في-الشرقي.html' },
+        { name: 'راديو رسالة', href: 'https://www.youtube.com/watch?v=XK3UR_DppZY' },
+        { name: 'Egypt Innovate', href: 'http://egyptinnovate.com/users/almejarra-coworking-space' },
+      ],
+    },
+  },
+  teamPage: {
+    eyebrow: 'رواد فضاء المجرة',
+    title: 'فريق المجرة',
+    subtitle: 'الناس اللي بتشغّل المجرة وبتخدم مجتمعها، وأول من بدأوا حكايتها.',
+    back: 'الرئيسية',
+    crew: {
+      title: 'الفريق',
+      members: [
+        { name: 'إسراء محمد', role: 'مسئولة التشغيل والاستقبال', image: site.images.staff.israa },
+        { name: 'سراء عادل الطاهر', role: 'مبدعة المجرة ومصورة فوتوغرافية', image: site.images.staff.saraa },
+        { name: 'هند', role: 'الاستقبال' },
+        { name: 'أحمد مختار', role: 'سوشيال ميديا ماركتينج', image: site.images.staff.mokhtar },
+        { name: 'أشرف فارس', role: 'المسئول التقني', image: site.images.staff.ashraf },
+        { name: 'أسماء فراج', role: 'متطوعة في تنظيم الأحداث وبناء المجتمع', image: site.images.staff.asmaa },
+        { name: 'آية أشرف الغنام', role: 'سوشيال ميديا ماركتينج', image: site.images.staff.aya },
+        { name: 'سارة ضياء', role: 'سوشيال ميديا ماركتينج', image: site.images.staff.sara },
+      ],
+    },
     honors: {
       title: 'لوحة الشرف',
       intro: [
@@ -261,20 +296,6 @@ export const ar: Content = {
         { name: 'عُمر حمدان', role: 'مسئول تنظيم الأحداث سابقاً', image: site.images.honors.omar },
         { name: 'محمد محمود', role: 'مسئول الاستقبال سابقاً', image: site.images.honors.mohamed },
         { name: 'نسمة عصام', role: 'فريق الموارد البشرية', image: site.images.honors.nesma },
-      ],
-    },
-    join: {
-      title: 'إنضم لرواد فضاء المجرة',
-      text: 'عندك شغف بالتسويق أو بناء المجتمع أو تنظيم الأحداث أو التصميم أو التصوير؟ تعالى ساهم معانا.',
-      cta: 'إنضم للفريق',
-    },
-    media: {
-      title: 'المجرة في الإعلام',
-      items: [
-        { name: 'مجلة ببساطة', href: 'https://www.facebook.com/BeBasataMag/posts/892681924143854' },
-        { name: 'شبكة محيط', href: 'http://moheet.com/2015/03/28/2241314/المجرة-أول-مساحة-عمل-مشتركة-في-الشرقي.html' },
-        { name: 'راديو رسالة', href: 'https://www.youtube.com/watch?v=XK3UR_DppZY' },
-        { name: 'Egypt Innovate', href: 'http://egyptinnovate.com/users/almejarra-coworking-space' },
       ],
     },
   },

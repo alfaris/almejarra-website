@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button'
 import { Sheet, SheetContent, SheetDescription, SheetTitle, SheetTrigger } from '@/components/ui/sheet'
 import { site } from '@/content/site'
 import { useI18n } from '@/lib/i18n'
+import { TEAM_HASH, goToTeam, useRoute } from '@/lib/router'
 import { scrollToId } from '@/lib/scroll'
 import { cn } from '@/lib/utils'
 
@@ -28,6 +29,7 @@ export function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [active, setActive] = useState('')
   const [menuOpen, setMenuOpen] = useState(false)
+  const route = useRoute()
   const { scrollY, scrollYProgress } = useScroll()
   useMotionValueEvent(scrollY, 'change', (y) => setScrolled(y > 40))
 
@@ -42,7 +44,8 @@ export function Navbar() {
       if (el) io.observe(el)
     })
     return () => io.disconnect()
-  }, [t])
+  }, [t, route])
+  const current = route === 'team' ? 'team' : active
 
   const go = (id: string) => (e: React.MouseEvent) => {
     e.preventDefault()
@@ -53,8 +56,15 @@ export function Navbar() {
   const goFromMenu = (id: string) => (e: React.MouseEvent) => {
     e.preventDefault()
     setMenuOpen(false)
-    setTimeout(() => scrollToId(id), 320)
+    setTimeout(() => (id === 'team' ? goToTeam() : scrollToId(id)), 320)
   }
+
+  const linkClass = (id: string) =>
+    cn('relative rounded-full px-3.5 py-2 text-sm text-white/75 transition hover:text-white', current === id && 'text-white')
+  const pill = (id: string) =>
+    current === id && (
+      <motion.span layoutId="nav-pill" className="absolute inset-0 -z-10 rounded-full bg-white/10" transition={{ type: 'spring', bounce: 0.25, duration: 0.5 }} />
+    )
 
   return (
     <header
@@ -70,21 +80,15 @@ export function Navbar() {
 
         <nav className="hidden items-center gap-1 lg:flex" aria-label="Main">
           {t.nav.links.map((l) => (
-            <a
-              key={l.id}
-              href={`#${l.id}`}
-              onClick={go(l.id)}
-              className={cn(
-                'relative rounded-full px-3.5 py-2 text-sm text-white/75 transition hover:text-white',
-                active === l.id && 'text-white',
-              )}
-            >
-              {active === l.id && (
-                <motion.span layoutId="nav-pill" className="absolute inset-0 -z-10 rounded-full bg-white/10" transition={{ type: 'spring', bounce: 0.25, duration: 0.5 }} />
-              )}
+            <a key={l.id} href={`#${l.id}`} onClick={go(l.id)} className={linkClass(l.id)}>
+              {pill(l.id)}
               {l.label}
             </a>
           ))}
+          <a href={TEAM_HASH} className={linkClass('team')} aria-current={route === 'team' ? 'page' : undefined}>
+            {pill('team')}
+            {t.nav.team}
+          </a>
         </nav>
 
         <div className="flex items-center gap-2">
@@ -120,6 +124,14 @@ export function Navbar() {
                     {l.label}
                   </a>
                 ))}
+                <a
+                  href={TEAM_HASH}
+                  onClick={goFromMenu('team')}
+                  className="flex items-baseline gap-3 rounded-xl px-3 py-3 font-display text-2xl transition hover:bg-white/5"
+                >
+                  <span className="text-xs text-star tabular-nums">0{t.nav.links.length + 1}</span>
+                  {t.nav.team}
+                </a>
               </nav>
               <Button variant="star" size="lg" className="mt-auto" asChild>
                 <a href="#contact" onClick={goFromMenu('contact')}>

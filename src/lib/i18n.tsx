@@ -38,7 +38,6 @@ export function I18nProvider({ children }: { children: ReactNode }) {
     const html = document.documentElement
     html.lang = lang
     html.dir = dir
-    document.title = t.meta.title
     document.querySelector('meta[name="description"]')?.setAttribute('content', t.meta.description)
   }, [lang, dir, t])
 

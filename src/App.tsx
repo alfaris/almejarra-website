@@ -2,7 +2,9 @@ import { useEffect } from 'react'
 import Lenis from 'lenis'
 
 import { useReducedMotion } from '@/lib/useMediaQuery'
-import { setLenis } from '@/lib/scroll'
+import { useI18n } from '@/lib/i18n'
+import { useRoute } from '@/lib/router'
+import { scrollToId, scrollToTop, setLenis } from '@/lib/scroll'
 import { About } from '@/sections/About'
 import { Contact } from '@/sections/Contact'
 import { Faq } from '@/sections/Faq'
@@ -15,10 +17,27 @@ import { Packages } from '@/sections/Packages'
 import { Spaces } from '@/sections/Spaces'
 import { Story } from '@/sections/Story'
 import { Team } from '@/sections/Team'
+import { TeamPage } from '@/sections/TeamPage'
 import { Why } from '@/sections/Why'
 
 export default function App() {
   const reduced = useReducedMotion()
+  const route = useRoute()
+  const { t } = useI18n()
+
+  useEffect(() => {
+    document.title = route === 'team' ? `${t.teamPage.title} | ${t.brand.name}` : t.meta.title
+  }, [route, t])
+
+  // On a route change start at the top, or at the home section named in the hash.
+  useEffect(() => {
+    const id = window.location.hash.slice(1)
+    if (route === 'home' && id && id !== 'top' && document.getElementById(id)) {
+      const timer = setTimeout(() => scrollToId(id), 60)
+      return () => clearTimeout(timer)
+    }
+    scrollToTop()
+  }, [route])
 
   useEffect(() => {
     if (reduced) return
@@ -32,12 +51,24 @@ export default function App() {
 
   return (
     <>
-      <a href="#about" className="sr-only focus:not-sr-only focus:fixed focus:start-4 focus:top-4 focus:z-50 focus:rounded-full focus:bg-star focus:px-4 focus:py-2 focus:text-space">
+      <a
+        href="#main"
+        onClick={(e) => {
+          // Keep the hash (and so the route) intact; just move focus.
+          e.preventDefault()
+          document.getElementById('main')?.focus()
+        }}
+        className="sr-only focus:not-sr-only focus:fixed focus:start-4 focus:top-4 focus:z-50 focus:rounded-full focus:bg-star focus:px-4 focus:py-2 focus:text-space">
         Skip to content
       </a>
       <Navbar />
-      <main>
-        <Hero />
+      {route === 'team' ? (
+        <main id="main" tabIndex={-1} className="outline-none">
+          <TeamPage />
+        </main>
+      ) : (
+        <main id="main" tabIndex={-1} className="outline-none">
+          <Hero />
         <Marquee />
         <About />
         <Spaces />
@@ -49,6 +80,7 @@ export default function App() {
         <Faq />
         <Contact />
       </main>
+      )}
       <Footer />
     </>
   )

@@ -4,6 +4,7 @@ import { BrandStripe } from '@/components/BrandStripe'
 import { SocialIcon } from '@/components/SocialIcon'
 import { site } from '@/content/site'
 import { useI18n } from '@/lib/i18n'
+import { TEAM_HASH } from '@/lib/router'
 import { scrollToId } from '@/lib/scroll'
 import { Logo } from './Navbar'
 
@@ -33,6 +34,9 @@ export function Footer() {
                 {l.label}
               </a>
             ))}
+            <a href={TEAM_HASH} className="text-white/70 transition hover:text-star">
+              {t.nav.team}
+            </a>
           </nav>
           <div className="flex flex-col items-start gap-4 md:items-end">
             <div className="flex gap-2">

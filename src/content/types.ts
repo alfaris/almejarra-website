@@ -31,6 +31,13 @@ export interface SpaceItem {
   cta: string
 }
 
+export interface Person {
+  name: string
+  role: string
+  /** Without a photo, a placeholder avatar is shown. */
+  image?: string
+}
+
 export interface PackageItem {
   id: string
   name: string
@@ -46,6 +53,7 @@ export interface Content {
   brand: { name: string; tagline: string }
   nav: {
     links: { id: string; label: string }[]
+    team: string
     book: string
     switchLang: string
     menu: string
@@ -83,10 +91,19 @@ export interface Content {
     title: string
     subtitle?: string
     members: { name: string; role: string; bio: string; image: string }[]
-    /** The first crew who built AlMejarra with its founder (the old site's honors board). */
-    honors: { title: string; intro: string[]; members: { name: string; role: string; image: string }[] }
+    /** Link to the team page. */
+    teamLink: string
     join: { title: string; text: string; cta: string }
     media: { title: string; items: { name: string; href: string }[] }
+  }
+  teamPage: {
+    eyebrow: string
+    title: string
+    subtitle: string
+    back: string
+    crew: { title: string; members: Person[] }
+    /** The first crew who built AlMejarra with its founder (the old site's honors board). */
+    honors: { title: string; intro: string[]; members: Person[] }
   }
   network: {
     eyebrow: string

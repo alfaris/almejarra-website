@@ -42,6 +42,7 @@ export const en: Content = {
       { id: 'faq', label: 'FAQ' },
       { id: 'contact', label: 'Contact' },
     ],
+    team: 'Team',
     book: 'Book a spot',
     switchLang: 'العربية',
     menu: 'Menu',
@@ -223,7 +224,7 @@ export const en: Content = {
   },
   team: {
     eyebrow: 'AlMejarra astronauts',
-    title: 'The founders',
+    title: 'Owners & founders',
     subtitle: 'Ahmed Fares launched AlMejarra with its first crew; Amr Herzo and Waleed Abdelhamid later joined as founders.',
     members: [
       {
@@ -245,6 +246,40 @@ export const en: Content = {
         image: site.images.teamWaleed,
       },
     ],
+    teamLink: 'Meet the team & honors board',
+    join: {
+      title: 'Join the AlMejarra crew',
+      text: 'Into marketing, community building, event planning, design or photography? Come build with us.',
+      cta: 'Join the team',
+    },
+    media: {
+      title: 'AlMejarra in the media',
+      items: [
+        { name: 'Bebasata Magazine', href: 'https://www.facebook.com/BeBasataMag/posts/892681924143854' },
+        { name: 'Moheet', href: 'http://moheet.com/2015/03/28/2241314/المجرة-أول-مساحة-عمل-مشتركة-في-الشرقي.html' },
+        { name: 'Radio Resala', href: 'https://www.youtube.com/watch?v=XK3UR_DppZY' },
+        { name: 'Egypt Innovate', href: 'http://egyptinnovate.com/users/almejarra-coworking-space' },
+      ],
+    },
+  },
+  teamPage: {
+    eyebrow: 'AlMejarra astronauts',
+    title: 'The AlMejarra team',
+    subtitle: 'The people who run AlMejarra and serve its community, and the first crew who started its story.',
+    back: 'Home',
+    crew: {
+      title: 'The team',
+      members: [
+        { name: 'Israa Mohamed', role: 'Operations & front desk', image: site.images.staff.israa },
+        { name: 'Saraa Adel El-Taher', role: 'Creative & photographer', image: site.images.staff.saraa },
+        { name: 'Hend', role: 'Front desk' },
+        { name: 'Ahmed Mokhtar', role: 'Social media marketing', image: site.images.staff.mokhtar },
+        { name: 'Ashraf Fares', role: 'Tech lead', image: site.images.staff.ashraf },
+        { name: 'Asmaa Farag', role: 'Events & community volunteer', image: site.images.staff.asmaa },
+        { name: 'Aya Ashraf El-Ghanam', role: 'Social media marketing', image: site.images.staff.aya },
+        { name: 'Sara Diaa', role: 'Social media marketing', image: site.images.staff.sara },
+      ],
+    },
     honors: {
       title: 'Honors board',
       intro: [
@@ -261,20 +296,6 @@ export const en: Content = {
         { name: 'Omar Hamdan', role: 'Former Events Coordinator', image: site.images.honors.omar },
         { name: 'Mohamed Mahmoud', role: 'Former Front Desk', image: site.images.honors.mohamed },
         { name: 'Nesma Essam', role: 'HR team', image: site.images.honors.nesma },
-      ],
-    },
-    join: {
-      title: 'Join the AlMejarra crew',
-      text: 'Into marketing, community building, event planning, design or photography? Come build with us.',
-      cta: 'Join the team',
-    },
-    media: {
-      title: 'AlMejarra in the media',
-      items: [
-        { name: 'Bebasata Magazine', href: 'https://www.facebook.com/BeBasataMag/posts/892681924143854' },
-        { name: 'Moheet', href: 'http://moheet.com/2015/03/28/2241314/المجرة-أول-مساحة-عمل-مشتركة-في-الشرقي.html' },
-        { name: 'Radio Resala', href: 'https://www.youtube.com/watch?v=XK3UR_DppZY' },
-        { name: 'Egypt Innovate', href: 'http://egyptinnovate.com/users/almejarra-coworking-space' },
       ],
     },
   },
