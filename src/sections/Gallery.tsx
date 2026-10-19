@@ -18,7 +18,7 @@ export function Gallery() {
   return (
     <section className="py-24 md:py-32">
       <div className="mx-auto max-w-7xl px-4 md:px-8">
-        <SectionHeading eyebrow={t.gallery.eyebrow} title={t.gallery.title} />
+        <SectionHeading eyebrow={t.gallery.eyebrow} title={t.gallery.title} subtitle={t.gallery.subtitle} />
         <motion.ul
           className="mt-12 grid auto-rows-[160px] grid-cols-2 gap-3 md:auto-rows-[220px] md:grid-cols-4 md:gap-4"
           variants={staggerParent}

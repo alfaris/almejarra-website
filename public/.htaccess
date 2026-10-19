@@ -1,5 +1,31 @@
 # Hostinger (LiteSpeed/Apache) settings for the static build.
 
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # One canonical host: https://almejarra.com.
+  # www → apex (also upgrades to https in the same hop).
+  RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+  RewriteRule ^ https://%1%{REQUEST_URI} [L,R=301,NE]
+  # http → https. The X-Forwarded-Proto check avoids a redirect loop if a CDN terminates TLS.
+  RewriteCond %{HTTPS} !=on
+  RewriteCond %{HTTP:X-Forwarded-Proto} !=https
+  RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301,NE]
+
+  # Pages from the old WordPress site (2015–2025) → their closest page today,
+  # so old press links, directory links and bookmarks keep working.
+  RewriteRule ^(honors-board|teams|join-the-astronauts)/?$ /team/ [L,R=301]
+  RewriteRule ^(almejarra-coworking-space|المجرة)/?$ /#about [L,R=301,NE]
+  RewriteRule ^(coworking-spaces|almejarra-shuttle|almejarra-capsule|almejarra-planet)/?$ /#spaces [L,R=301,NE]
+  RewriteRule ^community/?$ /#community [L,R=301,NE]
+  RewriteRule ^faq/?$ /#faq [L,R=301,NE]
+  RewriteRule ^(connect-almejarra|reserve-space|reserve-shuttle|f|f/interested|interested)/?$ /#contact [L,R=301,NE]
+  RewriteRule ^(feed|comments/feed|wp-admin|wp-login\.php|wp-content/.*|wp-json/.*|xmlrpc\.php)/?$ / [L,R=301]
+</IfModule>
+
+# Branded "page not found" page.
+ErrorDocument 404 /404.html
+
 # Compress text assets.
 <IfModule mod_deflate.c>
   AddOutputFilterByType DEFLATE text/html text/css text/plain text/xml application/javascript application/json application/xml image/svg+xml

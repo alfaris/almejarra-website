@@ -5,6 +5,7 @@ import { ArrowDown, Orbit } from 'lucide-react'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { useI18n } from '@/lib/i18n'
+import { PRERENDERED } from '@/lib/prerender'
 import { scrollToId } from '@/lib/scroll'
 import { useMediaQuery, useReducedMotion } from '@/lib/useMediaQuery'
 
@@ -61,6 +62,8 @@ export function Hero() {
   const textOpacity = useTransform(scrollYProgress, [0, 0.7], [1, 0])
 
   const words = (line: string) => line.split(' ')
+  // The prerendered page already shows the hero; don't hide it again just to play the intro.
+  const intro = <T,>(from: T) => (PRERENDERED ? false : from)
 
   return (
     <section ref={ref} id="top" className="relative isolate flex min-h-svh items-center overflow-hidden bg-space text-white">
@@ -84,7 +87,7 @@ export function Hero() {
       <div className="grain pointer-events-none absolute inset-0 -z-10 opacity-[0.06] mix-blend-overlay" aria-hidden />
 
       <motion.div style={{ y: textY, opacity: textOpacity }} className="mx-auto w-full max-w-7xl px-4 pb-24 pt-32 md:px-8">
-        <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
+        <motion.div initial={intro({ opacity: 0, y: 12 })} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
           <Badge variant="glass" className="mb-8">
             <Orbit />
             {t.hero.eyebrow}
@@ -98,7 +101,7 @@ export function Hero() {
                 <motion.span
                   key={wi}
                   className={li === 1 ? 'text-gradient inline-block' : 'inline-block'}
-                  initial={{ y: '110%' }}
+                  initial={intro({ y: '110%' })}
                   animate={{ y: 0 }}
                   transition={{ duration: 0.9, delay: 0.15 + li * 0.15 + wi * 0.06, ease: [0.22, 1, 0.36, 1] }}
                 >
@@ -106,13 +109,15 @@ export function Hero() {
                   {wi < words(line).length - 1 && ' '}
                 </motion.span>
               ))}
+              {/* Keeps the lines separate words in the heading's text, not "عملمشتركة". */}
+              {li < t.hero.title.length - 1 && ' '}
             </span>
           ))}
         </h1>
 
         <motion.p
           className="mt-8 max-w-xl text-lg leading-relaxed text-white/75 md:text-xl"
-          initial={{ opacity: 0, y: 16 }}
+          initial={intro({ opacity: 0, y: 16 })}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6 }}
         >
@@ -121,7 +126,7 @@ export function Hero() {
 
         <motion.div
           className="mt-10 flex flex-wrap items-center gap-3"
-          initial={{ opacity: 0, y: 16 }}
+          initial={intro({ opacity: 0, y: 16 })}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.75 }}
         >

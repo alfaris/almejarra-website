@@ -37,7 +37,8 @@ export function Navbar() {
   useMotionValueEvent(scrollY, 'change', (y) => setScrolled(y > 40))
 
   useEffect(() => {
-    const ids = t.nav.links.map((l) => l.id)
+    // The hero (#top) is watched too, so scrolling back up clears the highlight.
+    const ids = ['top', ...t.nav.links.map((l) => l.id)]
     const io = new IntersectionObserver(
       (entries) => entries.forEach((e) => e.isIntersecting && setActive(e.target.id)),
       { rootMargin: '-45% 0px -50% 0px' },
