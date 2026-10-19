@@ -1,5 +1,5 @@
 import { motion } from 'motion/react'
-import { Newspaper, Rocket } from 'lucide-react'
+import { ExternalLink, Newspaper, Rocket } from 'lucide-react'
 
 import { Reveal } from '@/components/Reveal'
 import { staggerChild, staggerParent } from '@/lib/motion'
@@ -68,8 +68,16 @@ export function Team() {
               <h3 className="font-display text-xl font-semibold">{team.media.title}</h3>
               <ul className="mt-4 flex flex-wrap gap-2">
                 {team.media.items.map((m) => (
-                  <li key={m} className="rounded-full bg-secondary px-3 py-1.5 text-sm">
-                    {m}
+                  <li key={m.href}>
+                    <a
+                      href={m.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 rounded-full bg-secondary px-3 py-1.5 text-sm transition hover:bg-primary hover:text-primary-foreground"
+                    >
+                      {m.name}
+                      <ExternalLink className="size-3.5 opacity-60" aria-hidden />
+                    </a>
                   </li>
                 ))}
               </ul>

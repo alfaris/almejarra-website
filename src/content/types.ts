@@ -81,10 +81,10 @@ export interface Content {
   team: {
     eyebrow: string
     title: string
-    subtitle: string
+    subtitle?: string
     members: { name: string; role: string; bio: string; image: string }[]
     join: { title: string; text: string; cta: string }
-    media: { title: string; items: string[] }
+    media: { title: string; items: { name: string; href: string }[] }
   }
   network: {
     eyebrow: string

@@ -4,9 +4,9 @@ const img = (name: string) => `${import.meta.env.BASE_URL}images/${name}`
 export const site = {
   url: 'https://almejarra.com',
   email: 'connect@almejarra.com',
-  phones: ['01113481083', '01005048220'],
+  phones: ['01005048220'],
   // International format, digits only, used for wa.me links.
-  whatsapp: '201113481083',
+  whatsapp: '201005048220',
   map: {
     lat: 30.587802,
     lng: 31.487646,

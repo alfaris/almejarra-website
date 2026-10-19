@@ -224,7 +224,6 @@ export const en: Content = {
   team: {
     eyebrow: 'AlMejarra astronauts',
     title: 'The founders',
-    subtitle: 'AlMejarra was built by a group of people who came together, learned from volunteering, and wanted to see real impact in their community.',
     members: [
       {
         name: 'Ahmed Fares',
@@ -250,7 +249,15 @@ export const en: Content = {
       text: 'Into marketing, community building, event planning, design or photography? Come build with us.',
       cta: 'Join the team',
     },
-    media: { title: 'AlMejarra in the media', items: ['Bebasata Magazine', 'Moheet', 'Radio Resala', 'Egypt Innovate'] },
+    media: {
+      title: 'AlMejarra in the media',
+      items: [
+        { name: 'Bebasata Magazine', href: 'https://www.facebook.com/BeBasataMag/posts/892681924143854' },
+        { name: 'Moheet', href: 'http://moheet.com/2015/03/28/2241314/المجرة-أول-مساحة-عمل-مشتركة-في-الشرقي.html' },
+        { name: 'Radio Resala', href: 'https://www.youtube.com/watch?v=XK3UR_DppZY' },
+        { name: 'Egypt Innovate', href: 'http://egyptinnovate.com/users/almejarra-coworking-space' },
+      ],
+    },
   },
   network: {
     eyebrow: 'Stronger together',

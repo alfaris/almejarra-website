@@ -224,7 +224,6 @@ export const ar: Content = {
   team: {
     eyebrow: 'رواد فضاء المجرة',
     title: 'المؤسسين',
-    subtitle: 'المجرة اتبنت بإيدين مجموعة اتجمعوا سوا، اتعلموا من التطوع، وحلموا يشوفوا تأثير حقيقي في مجتمعهم.',
     members: [
       {
         name: 'أحمد فارس',
@@ -250,7 +249,15 @@ export const ar: Content = {
       text: 'عندك شغف بالتسويق أو بناء المجتمع أو تنظيم الأحداث أو التصميم أو التصوير؟ تعالى ساهم معانا.',
       cta: 'إنضم للفريق',
     },
-    media: { title: 'المجرة في الإعلام', items: ['مجلة ببساطة', 'شبكة محيط', 'راديو رسالة', 'Egypt Innovate'] },
+    media: {
+      title: 'المجرة في الإعلام',
+      items: [
+        { name: 'مجلة ببساطة', href: 'https://www.facebook.com/BeBasataMag/posts/892681924143854' },
+        { name: 'شبكة محيط', href: 'http://moheet.com/2015/03/28/2241314/المجرة-أول-مساحة-عمل-مشتركة-في-الشرقي.html' },
+        { name: 'راديو رسالة', href: 'https://www.youtube.com/watch?v=XK3UR_DppZY' },
+        { name: 'Egypt Innovate', href: 'http://egyptinnovate.com/users/almejarra-coworking-space' },
+      ],
+    },
   },
   network: {
     eyebrow: 'بنقوي المجتمع',
