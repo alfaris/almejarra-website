@@ -104,7 +104,7 @@ export interface Content {
     host: string
     details: string
   }
-  reviews: { eyebrow: string; title: string }
+  reviews: { eyebrow: string; title: string; subtitle: string; rating: string; seeAll: string }
   story: {
     eyebrow: string
     title: string
