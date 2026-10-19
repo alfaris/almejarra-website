@@ -224,6 +224,7 @@ export const ar: Content = {
   team: {
     eyebrow: 'رواد فضاء المجرة',
     title: 'المؤسسين',
+    subtitle: 'أحمد فارس أطلق المجرة مع أول فريق ليها، وبعدها انضم عمرو حرزو ووليد عبد الحميد كمؤسسين.',
     members: [
       {
         name: 'أحمد فارس',
@@ -244,6 +245,24 @@ export const ar: Content = {
         image: site.images.teamWaleed,
       },
     ],
+    honors: {
+      title: 'لوحة الشرف',
+      intro: [
+        'المجرة اتبنت بإيدين مجموعة اتجمعوا سوا، اتعلموا من التطوع حاجات كتير حلوة خلتهم يجمعوا أفكارهم ومجهودهم عشان يبنوا مجتمع المجرة، اللي كان تحدي كبير ولأول مرة في الشرقية.',
+        'ظروف الحياة مش بتدوم على حال، لكن المجرة لا يمكن تنسى أول من بدأوا حكايتها وساهموا في وجودها وساعدوا المجتمع من حواليهم وسابوا فعلاً عظيم الأثر.',
+      ],
+      members: [
+        { name: 'ندى نجيب الدق', role: 'مؤسسة ومديرة التشغيل والعمليات سابقاً', image: site.images.honors.nada },
+        { name: 'رحاب أحمد', role: 'مديرة المجتمع سابقاً', image: site.images.honors.rehab },
+        { name: 'حسن صفوت نور الدين', role: 'مسئول بناء المجتمع سابقاً', image: site.images.honors.hassan },
+        { name: 'إسلام محمد سلمي', role: 'مدير الموارد البشرية سابقاً', image: site.images.honors.islam },
+        { name: 'يسري جمال', role: 'مصمم شعار وهوية المجرة', image: site.images.honors.yousry },
+        { name: 'أحمد سامي', role: 'مدير الشبكات الاجتماعية سابقاً', image: site.images.honors.sami },
+        { name: 'عُمر حمدان', role: 'مسئول تنظيم الأحداث سابقاً', image: site.images.honors.omar },
+        { name: 'محمد محمود', role: 'مسئول الاستقبال سابقاً', image: site.images.honors.mohamed },
+        { name: 'نسمة عصام', role: 'فريق الموارد البشرية', image: site.images.honors.nesma },
+      ],
+    },
     join: {
       title: 'إنضم لرواد فضاء المجرة',
       text: 'عندك شغف بالتسويق أو بناء المجتمع أو تنظيم الأحداث أو التصميم أو التصوير؟ تعالى ساهم معانا.',

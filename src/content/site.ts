@@ -28,6 +28,17 @@ export const site = {
     teamAhmed: img('team-ahmed-fares.webp'),
     teamAmr: img('team-amr-herzo.webp'),
     teamWaleed: img('team-waleed.webp'),
+    honors: {
+      nada: img('honors-nada.webp'),
+      rehab: img('honors-rehab.webp'),
+      hassan: img('honors-hassan.webp'),
+      islam: img('honors-islam.webp'),
+      yousry: img('honors-yousry.webp'),
+      sami: img('honors-sami.webp'),
+      omar: img('honors-omar.webp'),
+      mohamed: img('honors-mohamed.webp'),
+      nesma: img('honors-nesma.webp'),
+    },
   },
   videos: {
     about: 'XK3UR_DppZY',

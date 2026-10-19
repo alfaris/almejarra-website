@@ -83,6 +83,8 @@ export interface Content {
     title: string
     subtitle?: string
     members: { name: string; role: string; bio: string; image: string }[]
+    /** The first crew who built AlMejarra with its founder (the old site's honors board). */
+    honors: { title: string; intro: string[]; members: { name: string; role: string; image: string }[] }
     join: { title: string; text: string; cta: string }
     media: { title: string; items: { name: string; href: string }[] }
   }

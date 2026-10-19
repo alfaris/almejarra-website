@@ -1,5 +1,5 @@
 import { motion } from 'motion/react'
-import { ExternalLink, Newspaper, Rocket } from 'lucide-react'
+import { Award, ExternalLink, Newspaper, Rocket } from 'lucide-react'
 
 import { Reveal } from '@/components/Reveal'
 import { staggerChild, staggerParent } from '@/lib/motion'
@@ -47,6 +47,45 @@ export function Team() {
             </motion.article>
           ))}
         </motion.div>
+
+        <div className="mt-20 rounded-[2rem] bg-secondary p-6 md:p-12">
+          <div className="grid gap-10 lg:grid-cols-12">
+            <Reveal className="lg:col-span-4">
+              <Award className="mb-4 size-8 text-primary" aria-hidden />
+              <h3 className="font-display text-3xl font-semibold md:text-4xl">{team.honors.title}</h3>
+              <div className="mt-4 space-y-3 leading-relaxed text-muted-foreground">
+                {team.honors.intro.map((p) => (
+                  <p key={p}>{p}</p>
+                ))}
+              </div>
+            </Reveal>
+            <motion.ul
+              className="grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-3 lg:col-span-8"
+              variants={staggerParent}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true, margin: '-10% 0px' }}
+            >
+              {team.honors.members.map((m) => (
+                <motion.li key={m.name} variants={staggerChild} className="group flex flex-col items-center text-center">
+                  <div className="relative mb-3 size-24 md:size-28">
+                    <div className="rim-gradient absolute -inset-1 rounded-full opacity-0 transition-opacity duration-500 group-hover:opacity-100" aria-hidden />
+                    <img
+                      src={m.image}
+                      alt={m.name}
+                      loading="lazy"
+                      width={320}
+                      height={320}
+                      className="relative size-full rounded-full border-4 border-secondary object-cover grayscale transition duration-500 group-hover:grayscale-0"
+                    />
+                  </div>
+                  <p className="font-display font-semibold">{m.name}</p>
+                  <p className="mt-1 text-xs leading-snug text-muted-foreground">{m.role}</p>
+                </motion.li>
+              ))}
+            </motion.ul>
+          </div>
+        </div>
 
         <div className="mt-10 grid gap-6 lg:grid-cols-3">
           <Reveal className="lg:col-span-2">

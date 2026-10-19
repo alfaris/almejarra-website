@@ -224,10 +224,11 @@ export const en: Content = {
   team: {
     eyebrow: 'AlMejarra astronauts',
     title: 'The founders',
+    subtitle: 'Ahmed Fares launched AlMejarra with its first crew; Amr Herzo and Waleed Abdelhamid later joined as founders.',
     members: [
       {
         name: 'Ahmed Fares',
-        role: 'Co-founder & Creative Director',
+        role: 'Founder & Creative Director',
         bio: 'Web UI designer and developer focused on mobile UX. He sees entrepreneurship as a way of life and wants AlMejarra to leave a mark and spread knowledge everywhere.',
         image: site.images.teamAhmed,
       },
@@ -244,6 +245,24 @@ export const en: Content = {
         image: site.images.teamWaleed,
       },
     ],
+    honors: {
+      title: 'Honors board',
+      intro: [
+        'AlMejarra was built by a group of people who came together and learned a lot from volunteering, which led them to pool their ideas and effort to build the AlMejarra community, a big challenge and a first in Sharqia.',
+        'Life moves on, but AlMejarra will never forget the first people who started its story, helped it exist, supported the community around them and left a lasting mark.',
+      ],
+      members: [
+        { name: 'Nada Nagib Eldek', role: 'Co-founder, former Operations Manager', image: site.images.honors.nada },
+        { name: 'Rehab Ahmed', role: 'Former Community Manager', image: site.images.honors.rehab },
+        { name: 'Hassan Safwat Nour El-Din', role: 'Former Community Builder', image: site.images.honors.hassan },
+        { name: 'Islam Mohamed Salmy', role: 'Former HR Manager', image: site.images.honors.islam },
+        { name: 'Yousry Gamal', role: 'Designer of the AlMejarra logo & identity', image: site.images.honors.yousry },
+        { name: 'Ahmed Sami', role: 'Former Social Media Manager', image: site.images.honors.sami },
+        { name: 'Omar Hamdan', role: 'Former Events Coordinator', image: site.images.honors.omar },
+        { name: 'Mohamed Mahmoud', role: 'Former Front Desk', image: site.images.honors.mohamed },
+        { name: 'Nesma Essam', role: 'HR team', image: site.images.honors.nesma },
+      ],
+    },
     join: {
       title: 'Join the AlMejarra crew',
       text: 'Into marketing, community building, event planning, design or photography? Come build with us.',
