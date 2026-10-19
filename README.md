@@ -38,6 +38,9 @@ All copy lives in plain TypeScript files, so there is no CMS to maintain:
 | `src/content/site.ts` | Phones, WhatsApp number, email, map coordinates, social links, image paths |
 | `src/content/ar.ts` | All Arabic text: spaces, packages, FAQ, team, timeline… |
 | `src/content/en.ts` | The same structure in English |
+| `src/content/events.ts` | Upcoming events (date, title, place, link); past events hide themselves |
+| `src/content/reviews.ts` | Member reviews; the section stays hidden until one is added |
+| `src/content/meta.json` | Page titles and descriptions (run `npm run pages` after editing) |
 | `src/content/types.ts` | The shared shape both languages must follow |
 | `public/images/` | Photos and logo (WebP/PNG) |
 | `public/videos/` | The home page reel (H.264 MP4, a copy of the Instagram post linked in `site.reel`) |

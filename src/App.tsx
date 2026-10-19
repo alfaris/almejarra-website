@@ -7,6 +7,7 @@ import { useRoute } from '@/lib/router'
 import { scrollToId, scrollToTop, setLenis } from '@/lib/scroll'
 import { About } from '@/sections/About'
 import { Contact } from '@/sections/Contact'
+import { Events } from '@/sections/Events'
 import { Faq } from '@/sections/Faq'
 import { Footer } from '@/sections/Footer'
 import { Gallery } from '@/sections/Gallery'
@@ -15,6 +16,7 @@ import { Marquee } from '@/sections/Marquee'
 import { Navbar } from '@/sections/Navbar'
 import { Network } from '@/sections/Network'
 import { Packages } from '@/sections/Packages'
+import { Reviews } from '@/sections/Reviews'
 import { Spaces } from '@/sections/Spaces'
 import { Story } from '@/sections/Story'
 import { Team } from '@/sections/Team'
@@ -71,6 +73,8 @@ export default function App() {
           <Packages />
           <Why />
           <Gallery />
+          <Reviews />
+          <Events />
           <Story />
           <Team />
           <Network />

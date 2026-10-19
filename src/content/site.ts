@@ -6,6 +6,7 @@ const img = (name: string) => assetUrl(`images/${name}`)
 export const site = {
   url: 'https://almejarra.com',
   email: 'connect@almejarra.com',
+  facebookEvents: 'https://www.facebook.com/almejarra/events',
   phones: ['01005048220'],
   // International format, digits only, used for wa.me links.
   whatsapp: '201005048220',

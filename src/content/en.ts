@@ -217,6 +217,17 @@ export const en: Content = {
       { src: site.images.spaceWide, alt: 'A wide view of The Space' },
     ],
   },
+  events: {
+    eyebrow: 'Events',
+    title: 'Upcoming at AlMejarra',
+    subtitle: 'Workshops, meetups and bootcamps for the AlMejarra community.',
+    emptyTitle: 'No events announced right now',
+    emptyText: 'Follow our Facebook page to hear about new events first.',
+    follow: 'AlMejarra events on Facebook',
+    host: 'Host your event here',
+    details: 'Details & registration',
+  },
+  reviews: { eyebrow: 'From our members', title: 'What people say about AlMejarra' },
   story: {
     eyebrow: 'Mission log',
     title: 'From the Big Bang to a new launch',

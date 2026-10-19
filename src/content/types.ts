@@ -93,6 +93,17 @@ export interface Content {
     /** Bento order: room, shuttle, chairs, balloon, wide. */
     items: { src: string; alt: string }[]
   }
+  events: {
+    eyebrow: string
+    title: string
+    subtitle: string
+    emptyTitle: string
+    emptyText: string
+    follow: string
+    host: string
+    details: string
+  }
+  reviews: { eyebrow: string; title: string }
   story: {
     eyebrow: string
     title: string
