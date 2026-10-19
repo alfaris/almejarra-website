@@ -1,4 +1,4 @@
-// Member reviews. The section stays hidden until at least one is added.
+// Member reviews, shown under the Google rating in the Reviews section.
 // Use real reviews only, with the person's permission. Quotes are shown in their original
 // language on both the Arabic and English pages.
 //

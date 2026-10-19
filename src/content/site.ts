@@ -10,6 +10,11 @@ export const site = {
   phones: ['01005048220'],
   // International format, digits only, used for wa.me links.
   whatsapp: '201005048220',
+  /** The Google Maps listing. The rating is copied by hand: update it now and then. */
+  google: {
+    rating: 4.7,
+    mapsUrl: 'https://maps.app.goo.gl/J1mZfoPVtUnpyGEJ9',
+  },
   map: {
     lat: 30.587802,
     lng: 31.487646,

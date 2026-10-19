@@ -228,7 +228,13 @@ export const en: Content = {
     host: 'Host your event here',
     details: 'Details & registration',
   },
-  reviews: { eyebrow: 'From our members', title: 'What people say about AlMejarra' },
+  reviews: {
+    eyebrow: 'From our members',
+    title: 'What people say about AlMejarra',
+    subtitle: 'Real reviews from AlMejarra members on Google Maps.',
+    rating: 'Our rating on Google Maps',
+    seeAll: 'See all reviews',
+  },
   story: {
     eyebrow: 'Mission log',
     title: 'From the Big Bang to a new launch',
