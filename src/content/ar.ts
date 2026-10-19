@@ -93,6 +93,7 @@ export const ar: Content = {
       },
     ],
     reelLabel: 'شاهد المجرة على إنستجرام',
+    reelPlay: 'تشغيل فيديو المجرة',
   },
   spaces: {
     eyebrow: 'المساحات',

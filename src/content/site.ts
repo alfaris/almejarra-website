@@ -52,8 +52,12 @@ export const site = {
       nesma: img('honors-nesma.webp'),
     },
   },
-  /** Featured reel on the home page. */
-  instagramReel: 'https://www.instagram.com/p/DUGxZ_yD9D5/',
+  /** Featured reel on the home page: a self-hosted copy of the Instagram post, plus its link. */
+  reel: {
+    instagram: 'https://www.instagram.com/p/DUGxZ_yD9D5/',
+    video: `${import.meta.env.BASE_URL}videos/almejarra-reel.mp4`,
+    poster: img('reel-cover.webp'),
+  },
   videos: {
     about: 'XK3UR_DppZY',
     capsule: 'W5g_0Hvas6U',

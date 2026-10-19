@@ -40,6 +40,7 @@ All copy lives in plain TypeScript files, so there is no CMS to maintain:
 | `src/content/en.ts` | The same structure in English |
 | `src/content/types.ts` | The shared shape both languages must follow |
 | `public/images/` | Photos and logo (WebP/PNG) |
+| `public/videos/` | The home page reel (H.264 MP4, a copy of the Instagram post linked in `site.reel`) |
 
 Package prices currently read “Contact for pricing”. Change the `price` field of each package in `ar.ts` and `en.ts` to publish real prices.
 

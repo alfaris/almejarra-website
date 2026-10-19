@@ -93,6 +93,7 @@ export const en: Content = {
       },
     ],
     reelLabel: 'Watch AlMejarra on Instagram',
+    reelPlay: 'Play the AlMejarra video',
   },
   spaces: {
     eyebrow: 'Spaces',

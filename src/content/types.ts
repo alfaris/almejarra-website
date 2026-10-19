@@ -79,8 +79,9 @@ export interface Content {
     mission: { title: string; text: string }
     stats: { value: number; suffix?: string; label: string }[]
     pillars: { icon: IconName; title: string; text: string }[]
-    /** Fallback link text for the Instagram reel. */
+    /** Link to the reel on Instagram, and the play button's accessible name. */
     reelLabel: string
+    reelPlay: string
   }
   spaces: { eyebrow: string; title: string; subtitle: string; items: SpaceItem[] }
   packages: { eyebrow: string; title: string; subtitle: string; items: PackageItem[]; note: string; cta: string }
