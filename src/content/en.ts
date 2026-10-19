@@ -5,23 +5,18 @@ const network: Content['network']['groups'] = [
   {
     title: 'Cairo & Giza',
     items: [
-      { name: 'Qafeer', city: '6th of October', href: 'https://www.facebook.com/qafeerlabs' },
-      { name: 'Eco', city: 'Heliopolis', href: 'https://www.facebook.com/Ecocoworking' },
-      { name: 'Chefchaoun', city: 'Dokki', href: 'https://www.facebook.com/ChefchaounCo' },
-      { name: 'Al Maqarr', city: 'Heliopolis', href: 'https://www.facebook.com/AlMaqarr' },
-      { name: '302Labs', city: 'Nasr City', href: 'https://www.facebook.com/302Labs' },
-      { name: 'Dekka', city: 'Mokattam', href: 'https://www.facebook.com/DecaAdef' },
+      { name: 'MQR (formerly Al Maqarr)', city: 'Heliopolis, New Cairo, Downtown, Maadi, October', href: 'https://www.mqrspaces.com' },
+      { name: 'The GrEEK Campus', city: 'Downtown Cairo', href: 'https://thegreekcampus.com' },
+      { name: 'Makanak', city: 'Branches across Cairo & Giza', href: 'https://www.coworker.com/egypt/cairo/makanak-office-space' },
+      { name: '302Labs', city: 'Nasr City', href: 'https://www.coworker.com/egypt/cairo/302labs' },
     ],
   },
   {
     title: 'Governorates',
     items: [
-      { name: 'M3mal', city: 'Alexandria', href: 'https://www.facebook.com/m3mal' },
-      { name: 'Monk Space', city: 'Mansoura', href: 'https://www.facebook.com/MonkSpace.eg/' },
-      { name: 'Al Makkan', city: 'Menoufia', href: 'https://www.facebook.com/AlMakkan' },
-      { name: 'Cloud', city: 'Minya', href: 'https://www.facebook.com/cloudcoworking' },
-      { name: 'Mok3b', city: 'Ismailia', href: 'https://www.facebook.com/mok3b' },
-      { name: 'Boulevard', city: 'Port Said', href: 'https://www.facebook.com/Boulevardportsaid' },
+      { name: 'Flux', city: 'Alexandria', href: 'https://www.coworker.com/egypt/alexandria/flux-coworking-space' },
+      { name: 'Mok3b', city: 'Ismailia', href: 'https://www.coworker.com/egypt/ismailia/mok3b' },
+      { name: 'Rework', city: 'Mansoura', href: 'https://www.coworker.com/egypt/mansoura/rework-coworking-space' },
     ],
   },
 ]
@@ -78,7 +73,7 @@ export const en: Content = {
       { value: 2015, label: 'Year we launched' },
       { value: 60, label: 'Guests for events' },
       { value: 40, label: 'Seats in the Shuttle' },
-      { value: 12, suffix: '+', label: 'Partner spaces in Egypt' },
+      { value: 4, label: 'Spaces for every way of working' },
     ],
     pillars: [
       {
@@ -262,6 +257,7 @@ export const en: Content = {
         { name: 'Bebasata Magazine', href: 'https://www.facebook.com/BeBasataMag/posts/892681924143854' },
         { name: 'Moheet', href: 'http://moheet.com/2015/03/28/2241314/المجرة-أول-مساحة-عمل-مشتركة-في-الشرقي.html' },
         { name: 'Radio Resala', href: 'https://www.youtube.com/watch?v=XK3UR_DppZY' },
+        { name: 'Al Borsa News', href: 'https://www.alborsaanews.com/2018/02/28/1089159' },
         { name: 'Egypt Innovate', href: 'http://egyptinnovate.com/users/almejarra-coworking-space' },
       ],
     },
@@ -306,7 +302,7 @@ export const en: Content = {
   network: {
     eyebrow: 'Stronger together',
     title: 'A constellation of coworking spaces',
-    subtitle: 'AlMejarra is part of a bigger network. Meet other coworking spaces across Egypt.',
+    subtitle: 'AlMejarra is part of a wider coworking scene in Egypt. These spaces were still operating when we last checked (October 2026).',
     groups: network,
   },
   faq: {

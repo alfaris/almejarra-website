@@ -5,23 +5,18 @@ const network: Content['network']['groups'] = [
   {
     title: 'القاهرة والجيزة',
     items: [
-      { name: 'قفير', city: '6 أكتوبر', href: 'https://www.facebook.com/qafeerlabs' },
-      { name: 'إيكو', city: 'مصر الجديدة', href: 'https://www.facebook.com/Ecocoworking' },
-      { name: 'شفشاون', city: 'الدقي', href: 'https://www.facebook.com/ChefchaounCo' },
-      { name: 'المقر', city: 'مصر الجديدة', href: 'https://www.facebook.com/AlMaqarr' },
-      { name: '302Labs', city: 'مدينة نصر', href: 'https://www.facebook.com/302Labs' },
-      { name: 'دكة', city: 'المقطم', href: 'https://www.facebook.com/DecaAdef' },
+      { name: 'MQR (المقر سابقاً)', city: 'مصر الجديدة، التجمع، وسط البلد، المعادي، أكتوبر', href: 'https://www.mqrspaces.com' },
+      { name: 'The GrEEK Campus', city: 'وسط البلد', href: 'https://thegreekcampus.com' },
+      { name: 'مكانك', city: 'فروع في القاهرة والجيزة', href: 'https://www.coworker.com/egypt/cairo/makanak-office-space' },
+      { name: '302Labs', city: 'مدينة نصر', href: 'https://www.coworker.com/egypt/cairo/302labs' },
     ],
   },
   {
     title: 'المحافظات',
     items: [
-      { name: 'معمل', city: 'الإسكندرية', href: 'https://www.facebook.com/m3mal' },
-      { name: 'مونك سبيس', city: 'المنصورة', href: 'https://www.facebook.com/MonkSpace.eg/' },
-      { name: 'المكان', city: 'المنوفية', href: 'https://www.facebook.com/AlMakkan' },
-      { name: 'كلاود', city: 'المنيا', href: 'https://www.facebook.com/cloudcoworking' },
-      { name: 'مكعب', city: 'الإسماعيلية', href: 'https://www.facebook.com/mok3b' },
-      { name: 'بوليفار', city: 'بورسعيد', href: 'https://www.facebook.com/Boulevardportsaid' },
+      { name: 'Flux', city: 'الإسكندرية', href: 'https://www.coworker.com/egypt/alexandria/flux-coworking-space' },
+      { name: 'مكعب', city: 'الإسماعيلية', href: 'https://www.coworker.com/egypt/ismailia/mok3b' },
+      { name: 'Rework', city: 'المنصورة', href: 'https://www.coworker.com/egypt/mansoura/rework-coworking-space' },
     ],
   },
 ]
@@ -78,7 +73,7 @@ export const ar: Content = {
       { value: 2015, label: 'سنة الانطلاق' },
       { value: 60, label: 'فرد سعة الفضاء للفعاليات' },
       { value: 40, label: 'مقعد في قاعة المكوك' },
-      { value: 12, suffix: '+', label: 'مساحة شريكة في مصر' },
+      { value: 4, label: 'مساحات لكل طريقة شغل' },
     ],
     pillars: [
       {
@@ -262,6 +257,7 @@ export const ar: Content = {
         { name: 'مجلة ببساطة', href: 'https://www.facebook.com/BeBasataMag/posts/892681924143854' },
         { name: 'شبكة محيط', href: 'http://moheet.com/2015/03/28/2241314/المجرة-أول-مساحة-عمل-مشتركة-في-الشرقي.html' },
         { name: 'راديو رسالة', href: 'https://www.youtube.com/watch?v=XK3UR_DppZY' },
+        { name: 'جريدة البورصة', href: 'https://www.alborsaanews.com/2018/02/28/1089159' },
         { name: 'Egypt Innovate', href: 'http://egyptinnovate.com/users/almejarra-coworking-space' },
       ],
     },
@@ -306,7 +302,7 @@ export const ar: Content = {
   network: {
     eyebrow: 'بنقوي المجتمع',
     title: 'كوكبة مساحات العمل المشتركة',
-    subtitle: 'المجرة جزء من شبكة أكبر. تعرّف على مساحات العمل المشتركة الأخرى في مصر.',
+    subtitle: 'المجرة جزء من مشهد أكبر لمساحات العمل المشتركة في مصر. دي مساحات لسه شغالة حسب آخر مراجعة لينا (أكتوبر 2026).',
     groups: network,
   },
   faq: {
