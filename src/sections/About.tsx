@@ -3,6 +3,7 @@ import { animate, motion, useInView } from 'motion/react'
 import { Eye, Target } from 'lucide-react'
 
 import { Icon } from '@/components/Icon'
+import { InstagramEmbed } from '@/components/InstagramEmbed'
 import { Reveal } from '@/components/Reveal'
 import { staggerChild, staggerParent } from '@/lib/motion'
 import { SectionHeading } from '@/components/SectionHeading'
@@ -66,20 +67,13 @@ export function About() {
 
           <div className="relative lg:col-span-5">
             <Reveal>
-              <figure className="relative">
-                <div className="rim-gradient absolute -inset-1 rounded-[2rem] opacity-70 blur-xl" aria-hidden />
-                <img
-                  src={site.images.crew}
-                  alt={t.team.title}
-                  loading="lazy"
-                  width={1000}
-                  height={667}
-                  className="relative aspect-[4/5] w-full rounded-[1.75rem] object-cover"
-                />
-                <div className="absolute -bottom-6 start-6 end-6 rounded-2xl bg-space/90 p-5 text-white backdrop-blur md:start-10 md:end-10">
+              <figure className="relative mx-auto max-w-[540px]">
+                <div className="rim-gradient absolute -inset-1 rounded-[2rem] opacity-60 blur-xl" aria-hidden />
+                <InstagramEmbed url={site.instagramReel} label={a.reelLabel} className="relative" />
+                <figcaption className="relative mt-4 rounded-2xl bg-space p-5 text-white">
                   <p className="font-display text-2xl font-semibold">{t.hero.hashtag}</p>
                   <p className="mt-1 text-sm text-white/70">{t.footer.about}</p>
-                </div>
+                </figcaption>
               </figure>
             </Reveal>
           </div>

@@ -79,6 +79,8 @@ export interface Content {
     mission: { title: string; text: string }
     stats: { value: number; suffix?: string; label: string }[]
     pillars: { icon: IconName; title: string; text: string }[]
+    /** Fallback link text for the Instagram reel. */
+    reelLabel: string
   }
   spaces: { eyebrow: string; title: string; subtitle: string; items: SpaceItem[] }
   packages: { eyebrow: string; title: string; subtitle: string; items: PackageItem[]; note: string; cta: string }
@@ -113,7 +115,7 @@ export interface Content {
     back: string
     crew: { title: string; members: Person[] }
     /** The first crew who built AlMejarra with its founder (the old site's honors board). */
-    honors: { title: string; intro: string[]; members: Person[] }
+    honors: { title: string; intro: string[]; photoAlt: string; members: Person[] }
   }
   network: {
     eyebrow: string

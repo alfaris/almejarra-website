@@ -52,6 +52,8 @@ export const site = {
       nesma: img('honors-nesma.webp'),
     },
   },
+  /** Featured reel on the home page. */
+  instagramReel: 'https://www.instagram.com/p/DUGxZ_yD9D5/',
   videos: {
     about: 'XK3UR_DppZY',
     capsule: 'W5g_0Hvas6U',

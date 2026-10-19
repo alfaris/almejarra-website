@@ -92,6 +92,7 @@ export const en: Content = {
         text: 'The right room and the right tools for talks, meetings and events, whether you are an initiative, a team, a startup or a volunteer group.',
       },
     ],
+    reelLabel: 'Watch AlMejarra on Instagram',
   },
   spaces: {
     eyebrow: 'Spaces',
@@ -298,6 +299,7 @@ export const en: Content = {
         'AlMejarra was built by a group of people who came together and learned a lot from volunteering, which led them to pool their ideas and effort to build the AlMejarra community, a big challenge and a first in Sharqia.',
         'Life moves on, but AlMejarra will never forget the first people who started its story, helped it exist, supported the community around them and left a lasting mark.',
       ],
+      photoAlt: "AlMejarra's first crew at the space",
       members: [
         { name: 'Nada Nagib Eldek', role: 'Co-founder, former Operations Manager', image: site.images.honors.nada },
         { name: 'Rehab Ahmed', role: 'Former Community Manager', image: site.images.honors.rehab },

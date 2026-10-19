@@ -4,6 +4,7 @@ import { JoinCta } from '@/components/JoinCta'
 import { PersonGrid } from '@/components/PersonGrid'
 import { Reveal } from '@/components/Reveal'
 import { SectionHeading } from '@/components/SectionHeading'
+import { site } from '@/content/site'
 import { useI18n } from '@/lib/i18n'
 
 export function TeamPage() {
@@ -51,6 +52,14 @@ export function TeamPage() {
                     <p key={p}>{p}</p>
                   ))}
                 </div>
+                <img
+                  src={site.images.crew}
+                  alt={page.honors.photoAlt}
+                  loading="lazy"
+                  width={1000}
+                  height={667}
+                  className="mt-8 aspect-[3/2] w-full rounded-3xl object-cover"
+                />
               </Reveal>
               <PersonGrid people={page.honors.members} ring="border-secondary" className="lg:col-span-8" />
             </div>
