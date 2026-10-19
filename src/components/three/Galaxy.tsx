@@ -222,7 +222,7 @@ export default function GalaxyScene({
       camera.updateProjectionMatrix()
       // Keep the galaxy at the same share of the screen width on any aspect ratio.
       const halfWidth = Math.tan((camera.fov * Math.PI) / 360) * camera.position.length() * camera.aspect
-      galaxy.position.x = side * halfWidth * 0.8
+      galaxy.position.x = side * halfWidth * 0.4
     }
     resize()
     const ro = new ResizeObserver(resize)
