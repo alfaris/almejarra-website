@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "npm run pages && vite",
     "pages": "node scripts/pages.mjs",
-    "build": "npm run pages && tsc -b && vite build",
+    "build": "npm run pages && tsc -b && vite build && node scripts/prerender.mjs",
     "build:standalone": "npm run pages && tsc -b && vite build --mode standalone --outDir dist-standalone",
     "lint": "oxlint",
     "preview": "vite preview"
@@ -35,6 +35,7 @@
     "@types/three": "^0.186.0",
     "@vitejs/plugin-react": "^6.1.1",
     "oxlint": "^1.81.0",
+    "playwright": "^1.56.1",
     "tailwindcss": "^4.3.3",
     "tw-animate-css": "^1.4.0",
     "typescript": "~6.0.2",
