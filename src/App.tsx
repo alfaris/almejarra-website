@@ -9,6 +9,7 @@ import { About } from '@/sections/About'
 import { Contact } from '@/sections/Contact'
 import { Faq } from '@/sections/Faq'
 import { Footer } from '@/sections/Footer'
+import { Gallery } from '@/sections/Gallery'
 import { Hero } from '@/sections/Hero'
 import { Marquee } from '@/sections/Marquee'
 import { Navbar } from '@/sections/Navbar'
@@ -69,17 +70,18 @@ export default function App() {
       ) : (
         <main id="main" tabIndex={-1} className="outline-none">
           <Hero />
-        <Marquee />
-        <About />
-        <Spaces />
-        <Packages />
-        <Why />
-        <Story />
-        <Team />
-        <Network />
-        <Faq />
-        <Contact />
-      </main>
+          <Marquee />
+          <About />
+          <Spaces />
+          <Packages />
+          <Why />
+          <Gallery />
+          <Story />
+          <Team />
+          <Network />
+          <Faq />
+          <Contact />
+        </main>
       )}
       <Footer />
     </>

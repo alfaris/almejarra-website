@@ -110,7 +110,7 @@ export const en: Content = {
           { icon: 'printer', label: 'Printer & scanner' },
           { icon: 'armchair', label: 'IKEA furniture & bean bags' },
         ],
-        image: site.images.space,
+        image: site.images.spaceRoom,
         cta: 'Book a desk',
       },
       {
@@ -205,6 +205,17 @@ export const en: Content = {
       { icon: 'calendar', title: 'Events', text: 'Events and activities that meet your needs and build your skills.' },
       { icon: 'armchair', title: 'Smart furniture', text: 'Mostly IKEA furniture, plus carpets and bean bags.' },
       { icon: 'sun', title: 'Light & air', text: 'Garden views, sunlight and a breeze that calms your nerves.' },
+    ],
+  },
+  gallery: {
+    eyebrow: 'Take a look',
+    title: 'Inside AlMejarra',
+    items: [
+      { src: site.images.spaceRoom, alt: 'The Space: colourful desks, bean bags and an open floor' },
+      { src: site.images.shuttle, alt: 'The Shuttle room door, painted with its name and stars' },
+      { src: site.images.space, alt: 'Chairs and desks in The Space' },
+      { src: site.images.openingBalloon, alt: 'A balloon with the AlMejarra logo' },
+      { src: site.images.spaceWide, alt: 'A wide view of The Space' },
     ],
   },
   story: {

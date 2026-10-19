@@ -110,7 +110,7 @@ export const ar: Content = {
           { icon: 'printer', label: 'طابعة وسكانر' },
           { icon: 'armchair', label: 'أثاث إيكيا وكراسي بين باج' },
         ],
-        image: site.images.space,
+        image: site.images.spaceRoom,
         cta: 'احجز مكتبك',
       },
       {
@@ -205,6 +205,17 @@ export const ar: Content = {
       { icon: 'calendar', title: 'فعاليات وأنشطة', text: 'فعاليات وأنشطة مختلفة تلبي احتياجاتك وتنمي مهاراتك.' },
       { icon: 'armchair', title: 'أثاث ذكي', text: 'أغلب الأثاث من منتجات إيكيا الذكية، مع موكيت وكراسي منفوخة.' },
       { icon: 'sun', title: 'ضوء وهوا', text: 'إطلالة على الحدائق وضوء الشمس ونسمة هوا بتريّح أعصابك.' },
+    ],
+  },
+  gallery: {
+    eyebrow: 'من جوه',
+    title: 'جوه المجرة',
+    items: [
+      { src: site.images.spaceRoom, alt: 'فضاء المجرة: مكاتب ملونة وكراسي بين باج ومساحة مفتوحة' },
+      { src: site.images.shuttle, alt: 'باب قاعة المكوك مرسوم عليه اسمها والنجوم' },
+      { src: site.images.space, alt: 'كراسي ومكاتب في فضاء المجرة' },
+      { src: site.images.openingBalloon, alt: 'بالونة عليها شعار المجرة' },
+      { src: site.images.spaceWide, alt: 'لقطة واسعة لفضاء المجرة' },
     ],
   },
   story: {

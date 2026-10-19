@@ -83,6 +83,12 @@ export interface Content {
   spaces: { eyebrow: string; title: string; subtitle: string; items: SpaceItem[] }
   packages: { eyebrow: string; title: string; subtitle: string; items: PackageItem[]; note: string; cta: string }
   why: { eyebrow: string; title: string; items: { icon: IconName; title: string; text: string }[] }
+  gallery: {
+    eyebrow: string
+    title: string
+    /** Bento order: room, shuttle, chairs, balloon, wide. */
+    items: { src: string; alt: string }[]
+  }
   story: {
     eyebrow: string
     title: string
