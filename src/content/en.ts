@@ -58,6 +58,7 @@ export const en: Content = {
         'The open space, full of members',
         'A wide view of the coworking space, full of students and founders',
       ],
+      show: 'See photos of AlMejarra',
       open: 'Open photo',
       close: 'Close',
       prev: 'Previous photo',

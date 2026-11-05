@@ -66,10 +66,10 @@ export function PhotoLightbox({ index, onChange }: { index: number | null; onCha
                 />
               )}
             </AnimatePresence>
-            <button type="button" onClick={() => go(-1)} className={`${navButton} start-0 md:-start-16`} aria-label={t.hero.photos.prev}>
+            <button type="button" onClick={() => go(-1)} className={`${navButton} start-2 xl:-start-16`} aria-label={t.hero.photos.prev}>
               <Prev className="size-5" />
             </button>
-            <button type="button" onClick={() => go(1)} className={`${navButton} end-0 md:-end-16`} aria-label={t.hero.photos.next}>
+            <button type="button" onClick={() => go(1)} className={`${navButton} end-2 xl:-end-16`} aria-label={t.hero.photos.next}>
               <Next className="size-5" />
             </button>
           </div>

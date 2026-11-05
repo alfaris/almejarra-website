@@ -73,7 +73,9 @@ export function Hero() {
   }, [])
   useEffect(() => () => window.clearTimeout(lingerTimer.current), [])
   const [photo, setPhoto] = useState<number | null>(null)
-  const ringOpen = ringHover || cardsHover || lingering
+  // Keyboard users open the fan with a button over the ring; it stays open while focus is inside.
+  const [keyboardOpen, setKeyboardOpen] = useState(false)
+  const ringOpen = ringHover || cardsHover || lingering || keyboardOpen
   const side = compact ? 0 : dir === 'rtl' ? -1 : 1
 
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end start'] })
@@ -160,7 +162,22 @@ export function Hero() {
       </motion.div>
 
       {webgl && idle && (
-        <div ref={ringAnchor} className="pointer-events-none absolute inset-0 z-10">
+        <div
+          ref={ringAnchor}
+          className="pointer-events-none absolute inset-0 z-10"
+          onBlur={(e) => !e.currentTarget.contains(e.relatedTarget) && setKeyboardOpen(false)}
+          onKeyDown={(e) => e.key === 'Escape' && setKeyboardOpen(false)}
+        >
+          {/* Invisible until focused: mouse and touch reach the photos through the 3D ring itself. */}
+          <button
+            type="button"
+            aria-expanded={ringOpen}
+            onClick={() => setKeyboardOpen((o) => !o)}
+            className="absolute size-[calc(var(--ring-r)*2)] -translate-x-1/2 -translate-y-1/2 rounded-full outline-offset-4 focus-visible:outline-2 focus-visible:outline-star"
+            style={{ left: 'var(--ring-x)', top: 'var(--ring-y)' }}
+          >
+            <span className="sr-only">{t.hero.photos.show}</span>
+          </button>
           <RingPhotos open={ringOpen} compact={compact} side={side} reduced={reduced} onHoverChange={setCardsHover} onSelect={setPhoto} />
         </div>
       )}

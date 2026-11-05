@@ -71,7 +71,7 @@ export interface Content {
     scroll: string
     hashtag: string
     /** The ring photos' lightbox: one alt text per photo, in site.ringPhotos order. */
-    photos: { alts: string[]; open: string; close: string; prev: string; next: string }
+    photos: { alts: string[]; show: string; open: string; close: string; prev: string; next: string }
   }
   marquee: string[]
   about: {
