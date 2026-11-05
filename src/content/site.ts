@@ -60,6 +60,8 @@ export const site = {
       nesma: img('honors-nesma.webp'),
     },
   },
+  /** Photos that fan out beside the 3D ring in the hero when it is hovered or tapped. */
+  ringPhotos: [1, 2, 3, 4, 5, 6].map((n) => img(`ring-${n}.webp`)),
   /** Featured reel on the home page: a self-hosted copy of the Instagram post, plus its link. */
   reel: {
     instagram: 'https://www.instagram.com/p/DUGxZ_yD9D5/',
