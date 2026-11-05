@@ -257,8 +257,8 @@ export default function GalaxyScene({
     }
     const overRing = (x: number, y: number, target: EventTarget | null) => {
       if (!activeRef.current || ringScreen.r === 0) return false
-      // Links and buttons keep their own behaviour.
-      if (target instanceof Element && target.closest('a,button')) return false
+      // Links and buttons keep their own behaviour, and an open lightbox hides the ring.
+      if (target instanceof Element && target.closest('a,button,[data-ring-block]')) return false
       return Math.hypot(x - ringScreen.x, y - ringScreen.y) < ringScreen.r * 1.25
     }
     // The mouse's last position, so hover is checked again as the ring moves under a still pointer (scrolling).
@@ -279,7 +279,10 @@ export default function GalaxyScene({
     }
     // Touch screens have no hover: a tap on the ring opens the photos, a tap anywhere else closes them.
     const onPointerDown = (e: PointerEvent) => {
-      if (e.pointerType !== 'mouse') setHovered(overRing(e.clientX, e.clientY, e.target))
+      if (e.pointerType === 'mouse') return
+      // A tap on one of the photos is not a tap away from the ring.
+      if (e.target instanceof Element && e.target.closest('[data-ring-keep]')) return
+      setHovered(overRing(e.clientX, e.clientY, e.target))
     }
     window.addEventListener('pointermove', onPointer, { passive: true })
     window.addEventListener('pointerdown', onPointerDown, { passive: true })

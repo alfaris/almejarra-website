@@ -1,7 +1,8 @@
-import { lazy, Suspense, useEffect, useRef, useState } from 'react'
+import { lazy, Suspense, useCallback, useEffect, useRef, useState } from 'react'
 import { motion, useInView, useScroll, useTransform } from 'motion/react'
 import { ArrowDown, Orbit } from 'lucide-react'
 
+import { PhotoLightbox } from '@/components/PhotoLightbox'
 import { RingPhotos } from '@/components/RingPhotos'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
@@ -59,7 +60,22 @@ export function Hero() {
   const idle = useIdle()
   // Photos of the space fan out beside the 3D ring while it is hovered (or tapped on touch screens).
   const ringAnchor = useRef<HTMLDivElement>(null)
-  const [ringOpen, setRingOpen] = useState(false)
+  const [ringHover, setRingHover] = useState(false)
+  const [cardsHover, setCardsHover] = useState(false)
+  // A short grace period after the pointer leaves the ring, so it can travel to the cards.
+  const [lingering, setLingering] = useState(false)
+  const lingerTimer = useRef(0)
+  const onRingHover = useCallback((on: boolean) => {
+    setRingHover(on)
+    window.clearTimeout(lingerTimer.current)
+    setLingering(!on)
+    if (!on) lingerTimer.current = window.setTimeout(() => setLingering(false), 400)
+  }, [])
+  useEffect(() => () => window.clearTimeout(lingerTimer.current), [])
+  const [photo, setPhoto] = useState<number | null>(null)
+  // Keyboard users open the fan with a button over the ring; it stays open while focus is inside.
+  const [keyboardOpen, setKeyboardOpen] = useState(false)
+  const ringOpen = ringHover || cardsHover || lingering || keyboardOpen
   const side = compact ? 0 : dir === 'rtl' ? -1 : 1
 
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end start'] })
@@ -84,7 +100,7 @@ export function Hero() {
       {webgl && idle && (
         <div className="absolute inset-0 -z-10">
           <Suspense fallback={null}>
-            <GalaxyScene active={inView} reduced={reduced} compact={compact} side={side} anchor={ringAnchor} onRingHover={setRingOpen} />
+            <GalaxyScene active={inView} reduced={reduced} compact={compact} side={side} anchor={ringAnchor} onRingHover={onRingHover} />
           </Suspense>
         </div>
       )}
@@ -146,10 +162,26 @@ export function Hero() {
       </motion.div>
 
       {webgl && idle && (
-        <div ref={ringAnchor} className="pointer-events-none absolute inset-0 z-10">
-          <RingPhotos open={ringOpen} compact={compact} side={side} reduced={reduced} />
+        <div
+          ref={ringAnchor}
+          className="pointer-events-none absolute inset-0 z-10"
+          onBlur={(e) => !e.currentTarget.contains(e.relatedTarget) && setKeyboardOpen(false)}
+          onKeyDown={(e) => e.key === 'Escape' && setKeyboardOpen(false)}
+        >
+          {/* Invisible until focused: mouse and touch reach the photos through the 3D ring itself. */}
+          <button
+            type="button"
+            aria-expanded={ringOpen}
+            onClick={() => setKeyboardOpen((o) => !o)}
+            className="absolute size-[calc(var(--ring-r)*2)] -translate-x-1/2 -translate-y-1/2 rounded-full outline-offset-4 focus-visible:outline-2 focus-visible:outline-star"
+            style={{ left: 'var(--ring-x)', top: 'var(--ring-y)' }}
+          >
+            <span className="sr-only">{t.hero.photos.show}</span>
+          </button>
+          <RingPhotos open={ringOpen} compact={compact} side={side} reduced={reduced} onHoverChange={setCardsHover} onSelect={setPhoto} />
         </div>
       )}
+      <PhotoLightbox index={photo} onChange={setPhoto} />
 
       <button
         type="button"
