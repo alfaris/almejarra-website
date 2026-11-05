@@ -255,11 +255,17 @@ export default function GalaxyScene({
       document.body.style.cursor = on ? 'pointer' : ''
       hoverCb.current?.(on)
     }
-    const overRing = (e: PointerEvent) => {
+    const overRing = (x: number, y: number, target: EventTarget | null) => {
       if (!activeRef.current || ringScreen.r === 0) return false
       // Links and buttons keep their own behaviour.
-      if (e.target instanceof Element && e.target.closest('a,button')) return false
-      return Math.hypot(e.clientX - ringScreen.x, e.clientY - ringScreen.y) < ringScreen.r * 1.25
+      if (target instanceof Element && target.closest('a,button')) return false
+      return Math.hypot(x - ringScreen.x, y - ringScreen.y) < ringScreen.r * 1.25
+    }
+    // The mouse's last position, so hover is checked again as the ring moves under a still pointer (scrolling).
+    const mouse = { x: 0, y: 0, inside: false }
+    const onMouseLeave = () => {
+      mouse.inside = false
+      setHovered(false)
     }
 
     // Pointer in -1..1, for a gentle parallax.
@@ -267,14 +273,17 @@ export default function GalaxyScene({
     const onPointer = (e: PointerEvent) => {
       pointer.x = (e.clientX / window.innerWidth) * 2 - 1
       pointer.y = -((e.clientY / window.innerHeight) * 2 - 1)
-      if (e.pointerType === 'mouse') setHovered(overRing(e))
+      if (e.pointerType !== 'mouse') return
+      Object.assign(mouse, { x: e.clientX, y: e.clientY, inside: true })
+      setHovered(overRing(e.clientX, e.clientY, e.target))
     }
     // Touch screens have no hover: a tap on the ring opens the photos, a tap anywhere else closes them.
     const onPointerDown = (e: PointerEvent) => {
-      if (e.pointerType !== 'mouse') setHovered(overRing(e))
+      if (e.pointerType !== 'mouse') setHovered(overRing(e.clientX, e.clientY, e.target))
     }
     window.addEventListener('pointermove', onPointer, { passive: true })
     window.addEventListener('pointerdown', onPointerDown, { passive: true })
+    document.documentElement.addEventListener('mouseleave', onMouseLeave)
 
     const target = new Vector3()
     let last = performance.now()
@@ -284,8 +293,11 @@ export default function GalaxyScene({
       frame = requestAnimationFrame(tick)
       const delta = Math.min((now - last) / 1000, 0.1)
       last = now
-      // Skip work while the hero is off-screen or the tab is hidden.
-      if (!activeRef.current || document.hidden) return
+      // Skip work while the hero is off-screen or the tab is hidden, closing the photos first.
+      if (!activeRef.current || document.hidden) {
+        setHovered(false)
+        return
+      }
       elapsed += delta
 
       // Hovered, the ring swells a little and slows down.
@@ -324,6 +336,8 @@ export default function GalaxyScene({
         a.style.setProperty('--ring-y', `${c.y}px`)
         a.style.setProperty('--ring-r', `${ringScreen.r}px`)
       }
+      // Scrolling moves the ring without a pointermove: check the hover again against the still mouse.
+      if (mouse.inside) setHovered(overRing(mouse.x, mouse.y, document.elementFromPoint(mouse.x, mouse.y)))
     }
     frame = requestAnimationFrame(tick)
 
@@ -332,6 +346,7 @@ export default function GalaxyScene({
       ro.disconnect()
       window.removeEventListener('pointermove', onPointer)
       window.removeEventListener('pointerdown', onPointerDown)
+      document.documentElement.removeEventListener('mouseleave', onMouseLeave)
       setHovered(false)
       scene.traverse((obj) => {
         const mesh = obj as Mesh
