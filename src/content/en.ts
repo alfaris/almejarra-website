@@ -302,7 +302,7 @@ export const en: Content = {
         { name: 'Moheet', href: 'http://moheet.com/2015/03/28/2241314/المجرة-أول-مساحة-عمل-مشتركة-في-الشرقي.html' },
         { name: 'Radio Resala', href: 'https://www.youtube.com/watch?v=XK3UR_DppZY' },
         { name: 'Al Borsa News', href: 'https://www.alborsaanews.com/2018/02/28/1089159' },
-        { name: 'Egypt Innovate', href: 'http://egyptinnovate.com/users/almejarra-coworking-space' },
+        { name: 'Egypt Innovate', href: 'https://egyptinnovate.com/entities/profile/almejarra-coworking-space' },
       ],
     },
   },
