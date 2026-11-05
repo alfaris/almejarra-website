@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, type RefObject } from 'react'
 import {
   ACESFilmicToneMapping,
   AdditiveBlending,
@@ -168,15 +168,26 @@ export default function GalaxyScene({
   reduced,
   compact,
   side = 0,
+  anchor,
+  onRingHover,
 }: {
   active: boolean
   reduced: boolean
   compact: boolean
   /** Which side to push the galaxy to, opposite the headline: -1 left, 1 right, 0 centred. */
   side?: -1 | 0 | 1
+  /** Gets the ring's on-screen centre and radius every frame, as --ring-x, --ring-y and --ring-r. */
+  anchor?: RefObject<HTMLDivElement | null>
+  /** Called when the pointer moves onto or off the ring (or a tap toggles it on touch screens). */
+  onRingHover?: (on: boolean) => void
 }) {
   const host = useRef<HTMLDivElement>(null)
   const activeRef = useRef(active)
+  const hoverCb = useRef(onRingHover)
+
+  useEffect(() => {
+    hoverCb.current = onRingHover
+  }, [onRingHover])
 
   useEffect(() => {
     activeRef.current = active
@@ -228,13 +239,42 @@ export default function GalaxyScene({
     const ro = new ResizeObserver(resize)
     ro.observe(el)
 
+    // The ring's position on screen, in viewport pixels, refreshed every frame.
+    const ringScreen = { x: 0, y: 0, r: 0 }
+    const ringCentre = new Vector3()
+    const ringEdge = new Vector3()
+    // World point → pixels within the canvas.
+    const project = (v: Vector3, width: number, height: number) => {
+      v.project(camera)
+      return { x: ((v.x + 1) / 2) * width, y: ((1 - v.y) / 2) * height }
+    }
+    let hovered = false
+    const setHovered = (on: boolean) => {
+      if (on === hovered) return
+      hovered = on
+      document.body.style.cursor = on ? 'pointer' : ''
+      hoverCb.current?.(on)
+    }
+    const overRing = (e: PointerEvent) => {
+      if (!activeRef.current || ringScreen.r === 0) return false
+      // Links and buttons keep their own behaviour.
+      if (e.target instanceof Element && e.target.closest('a,button')) return false
+      return Math.hypot(e.clientX - ringScreen.x, e.clientY - ringScreen.y) < ringScreen.r * 1.25
+    }
+
     // Pointer in -1..1, for a gentle parallax.
     const pointer = { x: 0, y: 0 }
     const onPointer = (e: PointerEvent) => {
       pointer.x = (e.clientX / window.innerWidth) * 2 - 1
       pointer.y = -((e.clientY / window.innerHeight) * 2 - 1)
+      if (e.pointerType === 'mouse') setHovered(overRing(e))
+    }
+    // Touch screens have no hover: a tap on the ring opens the photos, a tap anywhere else closes them.
+    const onPointerDown = (e: PointerEvent) => {
+      if (e.pointerType !== 'mouse') setHovered(overRing(e))
     }
     window.addEventListener('pointermove', onPointer, { passive: true })
+    window.addEventListener('pointerdown', onPointerDown, { passive: true })
 
     const target = new Vector3()
     let last = performance.now()
@@ -248,9 +288,13 @@ export default function GalaxyScene({
       if (!activeRef.current || document.hidden) return
       elapsed += delta
 
+      // Hovered, the ring swells a little and slows down.
+      const grow = 1 + (hovered ? 0.15 : 0)
+      ring.scale.setScalar(ring.scale.x + (grow - ring.scale.x) * (1 - Math.exp(-delta * 8)))
+
       if (!reduced) {
         galaxyMaterial.uniforms.uTime.value += delta
-        ring.rotation.y += delta * 0.25
+        ring.rotation.y += delta * (hovered ? 0.08 : 0.25)
         ring.position.y = 0.55 + Math.sin(elapsed * 0.8) * 0.06
         stars.rotation.y += delta * 0.01
       }
@@ -264,6 +308,22 @@ export default function GalaxyScene({
       camera.lookAt(0, 0.2 - progress * 0.4, 0)
 
       renderer.render(scene, camera)
+
+      // Track the ring on screen: its centre, and a point on its outer edge for the radius.
+      const rect = el.getBoundingClientRect()
+      ring.getWorldPosition(ringCentre)
+      ringEdge.set(0.8 * ring.scale.x * galaxy.scale.x, 0, 0).applyQuaternion(camera.quaternion).add(ringCentre)
+      const c = project(ringCentre, rect.width, rect.height)
+      const edge = project(ringEdge, rect.width, rect.height)
+      ringScreen.x = rect.left + c.x
+      ringScreen.y = rect.top + c.y
+      ringScreen.r = Math.hypot(edge.x - c.x, edge.y - c.y)
+      const a = anchor?.current
+      if (a) {
+        a.style.setProperty('--ring-x', `${c.x}px`)
+        a.style.setProperty('--ring-y', `${c.y}px`)
+        a.style.setProperty('--ring-r', `${ringScreen.r}px`)
+      }
     }
     frame = requestAnimationFrame(tick)
 
@@ -271,6 +331,8 @@ export default function GalaxyScene({
       cancelAnimationFrame(frame)
       ro.disconnect()
       window.removeEventListener('pointermove', onPointer)
+      window.removeEventListener('pointerdown', onPointerDown)
+      setHovered(false)
       scene.traverse((obj) => {
         const mesh = obj as Mesh
         mesh.geometry?.dispose()
@@ -281,7 +343,7 @@ export default function GalaxyScene({
       renderer.dispose()
       renderer.domElement.remove()
     }
-  }, [reduced, compact, side])
+  }, [reduced, compact, side, anchor])
 
   return <div ref={host} className="size-full" aria-hidden />
 }

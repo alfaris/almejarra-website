@@ -2,6 +2,7 @@ import { lazy, Suspense, useEffect, useRef, useState } from 'react'
 import { motion, useInView, useScroll, useTransform } from 'motion/react'
 import { ArrowDown, Orbit } from 'lucide-react'
 
+import { RingPhotos } from '@/components/RingPhotos'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { useI18n } from '@/lib/i18n'
@@ -56,6 +57,10 @@ export function Hero() {
   const compact = useMediaQuery('(max-width: 768px)')
   const [webgl] = useState(canShow3D)
   const idle = useIdle()
+  // Photos of the space fan out beside the 3D ring while it is hovered (or tapped on touch screens).
+  const ringAnchor = useRef<HTMLDivElement>(null)
+  const [ringOpen, setRingOpen] = useState(false)
+  const side = compact ? 0 : dir === 'rtl' ? -1 : 1
 
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end start'] })
   const textY = useTransform(scrollYProgress, [0, 1], ['0%', '35%'])
@@ -79,7 +84,7 @@ export function Hero() {
       {webgl && idle && (
         <div className="absolute inset-0 -z-10">
           <Suspense fallback={null}>
-            <GalaxyScene active={inView} reduced={reduced} compact={compact} side={compact ? 0 : dir === 'rtl' ? -1 : 1} />
+            <GalaxyScene active={inView} reduced={reduced} compact={compact} side={side} anchor={ringAnchor} onRingHover={setRingOpen} />
           </Suspense>
         </div>
       )}
@@ -139,6 +144,12 @@ export function Hero() {
           <span className="ms-2 font-display text-lg text-white/60">{t.hero.hashtag}</span>
         </motion.div>
       </motion.div>
+
+      {webgl && idle && (
+        <div ref={ringAnchor} className="pointer-events-none absolute inset-0 z-10">
+          <RingPhotos open={ringOpen} compact={compact} side={side} reduced={reduced} />
+        </div>
+      )}
 
       <button
         type="button"
