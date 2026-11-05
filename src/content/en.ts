@@ -49,6 +49,20 @@ export const en: Content = {
     secondary: 'Explore spaces',
     scroll: 'Scroll',
     hashtag: '#NotJustAPlace',
+    photos: {
+      alts: [
+        'A playful moment at a desk in AlMejarra',
+        "AlMejarra's sign on the balcony of our Zagazig space",
+        'Members working in front of the mural',
+        'Students studying in the coworking space',
+        'The open space, full of members',
+        'A wide view of the coworking space, full of students and founders',
+      ],
+      open: 'Open photo',
+      close: 'Close',
+      prev: 'Previous photo',
+      next: 'Next photo',
+    },
   },
   marquee: ['Coworking', 'Skill building', 'Event space', 'Geek community', 'Entrepreneurship', 'Freelancing', '#NotJustAPlace'],
   about: {

@@ -1,7 +1,8 @@
-import { lazy, Suspense, useEffect, useRef, useState } from 'react'
+import { lazy, Suspense, useCallback, useEffect, useRef, useState } from 'react'
 import { motion, useInView, useScroll, useTransform } from 'motion/react'
 import { ArrowDown, Orbit } from 'lucide-react'
 
+import { PhotoLightbox } from '@/components/PhotoLightbox'
 import { RingPhotos } from '@/components/RingPhotos'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
@@ -59,7 +60,20 @@ export function Hero() {
   const idle = useIdle()
   // Photos of the space fan out beside the 3D ring while it is hovered (or tapped on touch screens).
   const ringAnchor = useRef<HTMLDivElement>(null)
-  const [ringOpen, setRingOpen] = useState(false)
+  const [ringHover, setRingHover] = useState(false)
+  const [cardsHover, setCardsHover] = useState(false)
+  // A short grace period after the pointer leaves the ring, so it can travel to the cards.
+  const [lingering, setLingering] = useState(false)
+  const lingerTimer = useRef(0)
+  const onRingHover = useCallback((on: boolean) => {
+    setRingHover(on)
+    window.clearTimeout(lingerTimer.current)
+    setLingering(!on)
+    if (!on) lingerTimer.current = window.setTimeout(() => setLingering(false), 400)
+  }, [])
+  useEffect(() => () => window.clearTimeout(lingerTimer.current), [])
+  const [photo, setPhoto] = useState<number | null>(null)
+  const ringOpen = ringHover || cardsHover || lingering
   const side = compact ? 0 : dir === 'rtl' ? -1 : 1
 
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end start'] })
@@ -84,7 +98,7 @@ export function Hero() {
       {webgl && idle && (
         <div className="absolute inset-0 -z-10">
           <Suspense fallback={null}>
-            <GalaxyScene active={inView} reduced={reduced} compact={compact} side={side} anchor={ringAnchor} onRingHover={setRingOpen} />
+            <GalaxyScene active={inView} reduced={reduced} compact={compact} side={side} anchor={ringAnchor} onRingHover={onRingHover} />
           </Suspense>
         </div>
       )}
@@ -147,9 +161,10 @@ export function Hero() {
 
       {webgl && idle && (
         <div ref={ringAnchor} className="pointer-events-none absolute inset-0 z-10">
-          <RingPhotos open={ringOpen} compact={compact} side={side} reduced={reduced} />
+          <RingPhotos open={ringOpen} compact={compact} side={side} reduced={reduced} onHoverChange={setCardsHover} onSelect={setPhoto} />
         </div>
       )}
+      <PhotoLightbox index={photo} onChange={setPhoto} />
 
       <button
         type="button"
